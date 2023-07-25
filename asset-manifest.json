@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/lamac-website/static/css/main.073c9b0a.css",
+    "main.js": "/lamac-website/static/js/main.fe23ee08.js",
+    "static/js/787.db5f779b.chunk.js": "/lamac-website/static/js/787.db5f779b.chunk.js",
+    "static/media/logo.svg": "/lamac-website/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/lamac-website/index.html",
+    "main.073c9b0a.css.map": "/lamac-website/static/css/main.073c9b0a.css.map",
+    "main.fe23ee08.js.map": "/lamac-website/static/js/main.fe23ee08.js.map",
+    "787.db5f779b.chunk.js.map": "/lamac-website/static/js/787.db5f779b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.fe23ee08.js"
+  ]
+}
