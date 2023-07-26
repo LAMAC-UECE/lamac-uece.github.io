@@ -15,12 +15,11 @@
   },
   "scripts": {
     "dev": "next dev",
-    "predeploy": "npm run build && touch ./build/.nojekyll",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "predeploy": "next build && next export && touch ./out/.nojekyll",
+    "deploy": "gh-pages -d out -t true"
   },
   "eslintConfig": {
     "extends": [
