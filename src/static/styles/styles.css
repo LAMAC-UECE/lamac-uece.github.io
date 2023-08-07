@@ -11,3 +11,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* Override Bootstrap */
+
+@media (max-width: 991px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    text-align: center;
+  }
+}
+
+.nav-link, .dropdown-item {
+  color: #0d7797 !important;
+}
+
+.nav-link:hover {
+  color: #1c96bb !important;
+}
+
+@media screen and (min-width: 992px) {
+  .navbar {
+    max-height: 120px;
+  }
+  
+  .dropdown .dropdown-menu {
+    -webkit-transition: all 0.9s ease-in-out;
+    -moz-transition: all 0.9s ease-in-out;
+    -ms-transition: all 0.9s ease-in-out;
+    -o-transition: all 0.9s ease-in-out;
+    transition: all 0.9s ease-in-out;
+  
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+  }
+  
+  .nav-item.dropdown:hover .dropdown-menu {
+    max-height: 300px !important;
+    display: block;
+    opacity: 1 !important;
+  }
+
+  .nav-link, .nav-item {
+    margin: 0 10px 0 10px;
+  }
+}
