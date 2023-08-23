@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import App from '../components/App/App';
+import Home from './Home/Home';
 
 
 export default function IndexPage() {
@@ -9,7 +9,7 @@ export default function IndexPage() {
   if (!mounted) return null;
   return (
     <React.StrictMode>
-      <App />
+      <Home />
     </React.StrictMode>
   )
 }
