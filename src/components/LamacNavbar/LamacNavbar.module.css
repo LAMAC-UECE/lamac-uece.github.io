@@ -1,0 +1,16 @@
+.Navbar {
+  background-color: rgb(255, 255, 255);
+  height: 100px;
+}
+
+.DelayedNavBrand {
+  opacity: 0;
+  animation: fadeInFromLeft 1s ease-in-out 4s forwards;
+}
+
+@keyframes fadeInFromLeft {
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}

@@ -2,20 +2,21 @@ import React from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import Image from 'next/image';
 import brand from '../../static/images/lamac-text-transparent.svg';
+import styles from './LamacNavbar.module.css';
 
-function LamacNavbar() {
+function LamacNavbar({ brandDelayed = false }) {
   return (
     <div>
-      <Navbar bg="white" expand="lg">
+      <Navbar className={styles.Navbar} expand="lg">
         <Container>
-          <Navbar.Brand href='/'>
+          <Navbar.Brand href='/' className={brandDelayed ? styles.DelayedNavBrand : ''}>
             <Image src={brand} width={250} alt="LaMaC Logo White" priority />
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="/about">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/about">Sobre</Nav.Link>
               <NavDropdown
                 title="Linhas de Pesquisa"
