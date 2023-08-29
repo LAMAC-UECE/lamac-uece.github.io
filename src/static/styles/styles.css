@@ -30,10 +30,6 @@ code {
 }
 
 @media screen and (min-width: 992px) {
-  .navbar {
-    max-height: 120px;
-  }
-  
   .dropdown .dropdown-menu {
     -webkit-transition: all 0.9s ease-in-out;
     -moz-transition: all 0.9s ease-in-out;
