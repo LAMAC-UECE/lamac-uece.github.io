@@ -3,6 +3,10 @@
   height: 140px;
 }
 
+.NavbarNav {
+  background-color: white;
+}
+
 @media (min-width: 991px) {
   .NavbarNav {
     animation: fadeIn 2s;
