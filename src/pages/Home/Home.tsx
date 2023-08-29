@@ -3,12 +3,14 @@ import styles from './Home.module.css';
 import LamacNavbar from '../../components/LamacNavbar/LamacNavbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AnimatedLogoIntro from './components/AnimatedLogoIntro/AnimatedLogoIntro';
+import InteractiveCGModel from './components/InteractiveCGModel/InteractiveCGModel';
 
 function Home() {
   return (
     <div className={styles.Home}>
       <LamacNavbar brandDelayed={true} />
       <AnimatedLogoIntro />
+      <InteractiveCGModel />
     </div>
   )
 }
