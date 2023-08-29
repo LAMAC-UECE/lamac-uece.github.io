@@ -14,7 +14,7 @@
 .gifImage {
   max-width: 100%;
   height: auto;
-  animation: fadeInUpAndOut 6s forwards; /* Aplicando a animação */
+  animation: fadeInUpAndOut 4s forwards; /* Aplicando a animação */
 }
 
 @keyframes fadeInUpAndOut {

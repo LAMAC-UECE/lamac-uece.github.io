@@ -7,7 +7,7 @@ const AnimatedLogoIntro = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 6000);
+    }, 4000);
 
     return () => {
       clearTimeout(timer);

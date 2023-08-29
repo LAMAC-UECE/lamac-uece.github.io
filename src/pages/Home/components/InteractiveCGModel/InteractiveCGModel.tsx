@@ -7,7 +7,7 @@ function InteractiveCGModel() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 6000);
+    }, 4000);
 
     return () => {
       clearTimeout(timer);

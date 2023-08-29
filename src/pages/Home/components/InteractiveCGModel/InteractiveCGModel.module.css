@@ -11,7 +11,7 @@
     height: 80%;
     margin-left: auto;
     margin-right: auto;
-    animation: fadeIn 3s;
+    animation: fadeIn 2s;
 }
 
 @media (max-width: 991px) {

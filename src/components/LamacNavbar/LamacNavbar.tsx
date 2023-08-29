@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import Image from 'next/image';
 import brand from '../../static/images/lamac-text-transparent.svg';
@@ -15,6 +15,23 @@ function LamacNavbar({ brandDelayed = false }) {
   const ProductionsTitle = (<span><RiArticleLine /> Produções</span>)
   const ContactTitle = (<span><BsChatDots /> Contato</span>)
 
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  useEffect(() => {
+    if (brandDelayed) {
+      const timer = setTimeout(() => {
+        setIsMenuVisible(true);
+      }, 3000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+    else {
+      setIsMenuVisible(true);
+    }
+  }, []);
+
   return (
     <Navbar className={styles.Navbar} expand="lg">
       <Container>
@@ -22,55 +39,60 @@ function LamacNavbar({ brandDelayed = false }) {
           <Image src={brand} width={250} alt="LaMaC Logo White" priority />
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            {/* Home */}
-            <Nav.Link href="/">{HomeTitle}</Nav.Link>
+        {isMenuVisible &&
+          <>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.NavbarNavControls} />
+            <Navbar.Collapse id="basic-navbar-nav" className={styles.NavbarNav}>
+              <Nav className="ms-auto">
+                {/* Home */}
+                <Nav.Link href="/">{HomeTitle}</Nav.Link>
 
-            {/* About */}
-            <Nav.Link href="/about" className='d-lg-none'>{AboutTitle}</Nav.Link>
-            <NavDropdown
-              title={AboutTitle}
-              id="research-nav-dropdown"
-              renderMenuOnMount={true}
-              onToggle={() => window.location.href = '/about'}
-              className='d-none d-lg-block'
-            >
-              <NavDropdown.Item href="/about#lamac">Sobre o LaMaC</NavDropdown.Item>
-              <NavDropdown.Item href="/about#computational-math">O que é Matemática Computacional</NavDropdown.Item>
-              <NavDropdown.Item href="/about#infrastructure">Infraestrutura do laboratório</NavDropdown.Item>
-              <NavDropdown.Item href="/about#research-areas">Linhas de pesquisa</NavDropdown.Item>
-              <NavDropdown.Item href="/about#team">Nossa equipe</NavDropdown.Item>
-            </NavDropdown>
+                {/* About */}
+                <Nav.Link href="/about" className='d-lg-none'>{AboutTitle}</Nav.Link>
+                <NavDropdown
+                  title={AboutTitle}
+                  id="research-nav-dropdown"
+                  renderMenuOnMount={true}
+                  onToggle={() => window.location.href = '/about'}
+                  className='d-none d-lg-block'
+                >
+                  <NavDropdown.Item href="/about#lamac">Sobre o LaMaC</NavDropdown.Item>
+                  <NavDropdown.Item href="/about#computational-math">O que é Matemática Computacional</NavDropdown.Item>
+                  <NavDropdown.Item href="/about#infrastructure">Infraestrutura do laboratório</NavDropdown.Item>
+                  <NavDropdown.Item href="/about#research-areas">Linhas de pesquisa</NavDropdown.Item>
+                  <NavDropdown.Item href="/about#team">Nossa equipe</NavDropdown.Item>
+                </NavDropdown>
 
-            {/* Tutorials */}
-            <Nav.Link href="/tutorials" className='d-lg-none'>{TutorialsTitle}</Nav.Link>
-            <NavDropdown
-              id="tutorials-nav-dropdown"
-              title={TutorialsTitle}
-              renderMenuOnMount={true}
-              onToggle={() => window.location.href = '/tutorials'}
-              className='d-none d-lg-block'
-            >
-              <NavDropdown.Header>Matemática</NavDropdown.Header>
-              <NavDropdown.Item href="/tutorials/linear-algebra">Álgebra Linear</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/numerical-calculus">Cálculo Numérico</NavDropdown.Item>
-              <NavDropdown.Divider></NavDropdown.Divider>
-              <NavDropdown.Header>Programação</NavDropdown.Header>
-              <NavDropdown.Item href="/tutorials/data-visualization">Visualização de Dados (Matplotlib)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/image-processing">Processamento de Imagens (OpenCV)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/computer-graphics">Computação Gráfica (WebGL)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/machine-learning">Machine Learning (PyTorch)</NavDropdown.Item>
-            </NavDropdown>
+                {/* Tutorials */}
+                <Nav.Link href="/tutorials" className='d-lg-none'>{TutorialsTitle}</Nav.Link>
+                <NavDropdown
+                  id="tutorials-nav-dropdown"
+                  title={TutorialsTitle}
+                  renderMenuOnMount={true}
+                  onToggle={() => window.location.href = '/tutorials'}
+                  className='d-none d-lg-block'
+                >
+                  <NavDropdown.Header>Matemática</NavDropdown.Header>
+                  <NavDropdown.Item href="/tutorials/linear-algebra">Álgebra Linear</NavDropdown.Item>
+                  <NavDropdown.Item href="/tutorials/numerical-calculus">Cálculo Numérico</NavDropdown.Item>
+                  <NavDropdown.Divider></NavDropdown.Divider>
+                  <NavDropdown.Header>Programação</NavDropdown.Header>
+                  <NavDropdown.Item href="/tutorials/data-visualization">Visualização de Dados (Matplotlib)</NavDropdown.Item>
+                  <NavDropdown.Item href="/tutorials/image-processing">Processamento de Imagens (OpenCV)</NavDropdown.Item>
+                  <NavDropdown.Item href="/tutorials/computer-graphics">Computação Gráfica (WebGL)</NavDropdown.Item>
+                  <NavDropdown.Item href="/tutorials/machine-learning">Machine Learning (PyTorch)</NavDropdown.Item>
+                </NavDropdown>
 
-            {/* Productions */}
-            <Nav.Link href="/productions">{ProductionsTitle}</Nav.Link>
+                {/* Productions */}
+                <Nav.Link href="/productions">{ProductionsTitle}</Nav.Link>
 
-            {/* Contact */}
-            <Nav.Link>{ContactTitle}</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+                {/* Contact */}
+                <Nav.Link>{ContactTitle}</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </>
+        }
+
       </Container>
     </Navbar>
   );
