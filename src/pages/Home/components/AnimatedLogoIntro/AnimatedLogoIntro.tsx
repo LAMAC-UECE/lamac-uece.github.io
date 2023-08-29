@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './AnimatedLogoSection.module.css';
+import styles from './AnimatedLogoIntro.module.css';
 
-const AnimatedLogoSection = () => {
+const AnimatedLogoIntro = () => {
   return (
-    <section className={styles.AnimatedLogoSection}>
+    <section className={styles.AnimatedLogoIntro}>
       <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">
@@ -19,4 +19,4 @@ const AnimatedLogoSection = () => {
   );
 };
 
-export default AnimatedLogoSection;
+export default AnimatedLogoIntro;
