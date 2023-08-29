@@ -3,8 +3,18 @@ import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import Image from 'next/image';
 import brand from '../../static/images/lamac-text-transparent.svg';
 import styles from './LamacNavbar.module.css';
+import { AiOutlineHome } from 'react-icons/ai'
+import { VscBook } from 'react-icons/vsc'
+import { RiArticleLine } from 'react-icons/ri'
+import { BsChatRightDots, BsInfoCircle } from 'react-icons/bs'
 
 function LamacNavbar({ brandDelayed = false }) {
+  const HomeTitle = (<span><AiOutlineHome /> Página Inicial</span>)
+  const AboutTitle = (<span><BsInfoCircle /> Informações</span>)
+  const TutorialsTitle = (<span><VscBook /> Tutoriais</span>)
+  const ProductionsTitle = (<span><RiArticleLine /> Produções</span>)
+  const ContactTitle = (<span><BsChatRightDots /> Contato</span>)
+
   return (
     <Navbar className={styles.Navbar} expand="lg">
       <Container>
@@ -16,15 +26,15 @@ function LamacNavbar({ brandDelayed = false }) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             {/* Home */}
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/">{HomeTitle}</Nav.Link>
 
             {/* About */}
-            <Nav.Link href="/about" className='d-lg-none'>Sobre o LaMaC</Nav.Link>
+            <Nav.Link href="/about" className='d-lg-none'>{AboutTitle}</Nav.Link>
             <NavDropdown
-              title="Informações"
+              title={AboutTitle}
               id="research-nav-dropdown"
               renderMenuOnMount={true}
-              onToggle={() => window.location.href='/about'}
+              onToggle={() => window.location.href = '/about'}
               className='d-none d-lg-block'
             >
               <NavDropdown.Item href="/about#lamac">Sobre o LaMaC</NavDropdown.Item>
@@ -35,12 +45,12 @@ function LamacNavbar({ brandDelayed = false }) {
             </NavDropdown>
 
             {/* Tutorials */}
-            <Nav.Link href="/about" className='d-lg-none'>Tutoriais</Nav.Link>
+            <Nav.Link href="/tutorials" className='d-lg-none'>{TutorialsTitle}</Nav.Link>
             <NavDropdown
               id="tutorials-nav-dropdown"
-              title="Tutoriais"
+              title={TutorialsTitle}
               renderMenuOnMount={true}
-              onToggle={() => window.location.href='/tutorials'}
+              onToggle={() => window.location.href = '/tutorials'}
               className='d-none d-lg-block'
             >
               <NavDropdown.Header>Matemática</NavDropdown.Header>
@@ -55,10 +65,10 @@ function LamacNavbar({ brandDelayed = false }) {
             </NavDropdown>
 
             {/* Productions */}
-            <Nav.Link href="/productions">Produções</Nav.Link>
+            <Nav.Link href="/productions">{ProductionsTitle}</Nav.Link>
 
             {/* Contact */}
-            <Nav.Link href="#contact-us">Contato</Nav.Link>
+            <Nav.Link>{ContactTitle}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

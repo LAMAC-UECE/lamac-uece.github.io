@@ -57,3 +57,12 @@ code {
 .navbar-toggler:focus {
   box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) #0d7797 !important;
 }
+
+span {
+  display: inline-flex;
+  align-items: center;
+}
+
+span > svg {
+  margin-right: 5px;
+}
