@@ -5,11 +5,13 @@
 
 .DelayedNavBrand {
   opacity: 0;
-  animation: fadeInFromLeft 1s ease-in-out 4s forwards;
+  transform: translate3d(-50px, 0, 0);
+  animation: fadeInFromLeft 2s ease-in-out 4s forwards;
 }
 
 @keyframes fadeInFromLeft {
   100% {
+    transform: translate3d(0, 0, 0);
     opacity: 1;
     left: 0;
   }
