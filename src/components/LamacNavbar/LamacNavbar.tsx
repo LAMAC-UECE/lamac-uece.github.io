@@ -6,14 +6,14 @@ import styles from './LamacNavbar.module.css';
 import { AiOutlineHome } from 'react-icons/ai'
 import { VscBook } from 'react-icons/vsc'
 import { RiArticleLine } from 'react-icons/ri'
-import { BsChatRightDots, BsInfoCircle } from 'react-icons/bs'
+import { BsChatDots, BsInfoCircle } from 'react-icons/bs'
 
 function LamacNavbar({ brandDelayed = false }) {
   const HomeTitle = (<span><AiOutlineHome /> Página Inicial</span>)
   const AboutTitle = (<span><BsInfoCircle /> Informações</span>)
   const TutorialsTitle = (<span><VscBook /> Tutoriais</span>)
   const ProductionsTitle = (<span><RiArticleLine /> Produções</span>)
-  const ContactTitle = (<span><BsChatRightDots /> Contato</span>)
+  const ContactTitle = (<span><BsChatDots /> Contato</span>)
 
   return (
     <Navbar className={styles.Navbar} expand="lg">
