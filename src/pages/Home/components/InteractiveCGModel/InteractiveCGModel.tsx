@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import styles from './InteractiveCGModel.module.css'
 
-function InteractiveCGModel() {
+function InteractiveCGModel({delayed=false}) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if (delayed) {
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 4000);
+  
+      return () => {
+        clearTimeout(timer);
+      };
+    } else {
       setIsVisible(true);
-    }, 4000);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    }
   }, []);
 
   return (
     isVisible && (
       <div className={styles.HomeGlCanvasContainer}>
-        <canvas id="glcanvas" className={styles.HomeGlCanvas}></canvas>
+        <canvas id="glcanvas" className={`${styles.HomeGlCanvas} ${delayed ? styles.DelayedAnim : ''}`}></canvas>
       </div>
     )
   )
