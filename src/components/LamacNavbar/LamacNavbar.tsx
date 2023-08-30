@@ -3,17 +3,17 @@ import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import Image from 'next/image';
 import brand from '../../static/images/lamac-text-transparent.svg';
 import styles from './LamacNavbar.module.css';
-import { AiOutlineHome } from 'react-icons/ai'
-import { VscBook } from 'react-icons/vsc'
-import { RiArticleLine } from 'react-icons/ri'
-import { BsChatDots, BsInfoCircle } from 'react-icons/bs'
+import { AiOutlineHome } from 'react-icons/ai';
+import { VscBook } from 'react-icons/vsc';
+import { RiArticleLine } from 'react-icons/ri';
+import { BsChatDots, BsInfoCircle } from 'react-icons/bs';
 
 function LamacNavbar({ brandDelayed = false }) {
-  const HomeTitle = (<span><AiOutlineHome /> Página Inicial</span>)
-  const AboutTitle = (<span><BsInfoCircle /> Informações</span>)
-  const TutorialsTitle = (<span><VscBook /> Tutoriais</span>)
-  const ProductionsTitle = (<span><RiArticleLine /> Produções</span>)
-  const ContactTitle = (<span><BsChatDots /> Contato</span>)
+  const HomeTitle = (<span><AiOutlineHome /> Home</span>);
+  const AboutTitle = (<span><BsInfoCircle /> Informações</span>);
+  const TutorialsTitle = (<span><VscBook /> Tutoriais</span>);
+  const ProductionsTitle = (<span><RiArticleLine /> Produções</span>);
+  const ContactTitle = (<span><BsChatDots /> Contato</span>);
 
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
@@ -41,8 +41,8 @@ function LamacNavbar({ brandDelayed = false }) {
 
         {isMenuVisible &&
           <>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.NavbarNavControls} />
-            <Navbar.Collapse id="basic-navbar-nav" className={styles.NavbarNav}>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className={brandDelayed ? styles.NavbarNavDelayed : ''} />
+            <Navbar.Collapse id="basic-navbar-nav" className={`${styles.NavbarNav} ${brandDelayed ? styles.NavbarNavDelayed : ''}`}>
               <Nav className="ms-auto">
                 {/* Home */}
                 <Nav.Link href="/">{HomeTitle}</Nav.Link>

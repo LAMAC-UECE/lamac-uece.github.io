@@ -5,15 +5,10 @@
 
 .NavbarNav {
   background-color: white;
+  z-index: 10;
 }
 
-@media (min-width: 991px) {
-  .NavbarNav {
-    animation: fadeIn 2s;
-  }
-}
-
-.NavbarNavControls {
+.NavbarNavDelayed {
   animation: fadeIn 2s;
 }
 
