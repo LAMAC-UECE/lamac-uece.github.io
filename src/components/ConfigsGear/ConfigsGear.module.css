@@ -1,0 +1,44 @@
+.BottomRight {
+  position: fixed;
+  right: 0px; 
+  bottom: 0px;
+}
+
+.ConfigsGear {
+  width: 50px;
+  height: 50px;
+  margin: 30px;
+  animation: spin 10000ms linear infinite;
+}
+
+@media screen and (min-width: 991px) {
+  .ConfigsGear {
+    margin: 50px;
+  }
+}
+
+.ConfigsGear:hover {
+  cursor: pointer;
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
+
+.Delayed {
+  animation: spin 10000ms linear infinite, fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -15,6 +15,34 @@ code {
 
 /* Override Bootstrap */
 
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #0d7797;
+  --bs-btn-border-color: #0d7797;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #09566d;
+  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #0b6783;
+  --bs-btn-active-border-color: #0b6783;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #868e91;
+  --bs-btn-disabled-border-color: #868e91;
+}
+
+.form-check-input:checked {
+  background-color: #7dc164;
+  border-color: #7dc164;
+}
+
+.form-check-input:focus {
+  border-color: #b1daa2;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #b1daa2;
+}
+
 @media (max-width: 991px) {
   .nav-item.dropdown:hover .dropdown-menu {
     text-align: center;
