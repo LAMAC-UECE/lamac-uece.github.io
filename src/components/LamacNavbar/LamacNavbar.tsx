@@ -42,7 +42,7 @@ function LamacNavbar({ brandDelayed = false }) {
         {isMenuVisible &&
           <>
             <Navbar.Toggle aria-controls="basic-navbar-nav" className={brandDelayed ? styles.NavbarNavDelayed : ''} />
-            <Navbar.Collapse id="basic-navbar-nav" className={`${styles.NavbarNav} ${brandDelayed ? styles.NavbarNavDelayed : ''}`}>
+            <Navbar.Collapse id="basic-navbar-nav" className={`${styles.NavbarNav} ${styles.NavbarCollapse} ${brandDelayed ? styles.NavbarNavDelayed : ''}`}>
               <Nav className="ms-auto">
                 {/* Home */}
                 <Nav.Link href="/">{HomeTitle}</Nav.Link>
