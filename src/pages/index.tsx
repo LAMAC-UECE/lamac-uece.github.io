@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Home from './Home/Home';
+import Home from './home';
 
 
 export default function IndexPage() {
