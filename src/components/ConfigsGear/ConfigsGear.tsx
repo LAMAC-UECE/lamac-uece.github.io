@@ -12,7 +12,7 @@ function ConfigsGear(props: {
     if (props.delayed) {
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 3500);
+      }, 4500);
 
       return () => {
         clearTimeout(timer);

@@ -12,23 +12,15 @@ import { BsChatDots, BsInfoCircle } from 'react-icons/bs';
 import { getCookie } from '../../static/ts/cookiesAPI';
 
 function LamacNavbar() {
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [brandDelayed, setBrandDelayed] = useState(false);
 
   useEffect(() => {
-    if (!getCookie("disableIntro") && window.location.href === '') {
-      const timer = setTimeout(() => {
-        setIsMenuVisible(true);
+    if (window.location.pathname === "/") {
+      if (!getCookie("disableIntro")) {
         setBrandDelayed(true);
-      }, 3000);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    } else {
-      setIsMenuVisible(true);
-    }
-  }, []);
+      }
+    } 
+  }, [])
 
   const HomeTitle = (<span><AiOutlineHome /> Home</span>);
   const AboutTitle = (<span><BsInfoCircle /> Informações</span>);
@@ -44,8 +36,11 @@ function LamacNavbar() {
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" className={brandDelayed ? styles.NavbarNavDelayed : ''} />
-        <Navbar.Collapse id="basic-navbar-nav" className={`${styles.NavbarNav} ${styles.NavbarCollapse} ${brandDelayed ? styles.NavbarNavDelayed : ''}`}>
-          <Nav className="ms-auto">
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className={`${styles.NavbarNav} ${styles.NavbarCollapse} ${brandDelayed ? styles.NavbarNavDelayed : ''}`}
+        >
+          <Nav className={"ms-auto"}>
             {/* Home */}
             <Nav.Link href="/">{HomeTitle}</Nav.Link>
 
