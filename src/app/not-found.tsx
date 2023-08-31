@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import LamacNavbar from '../components/LamacNavbar/LamacNavbar';
-import { Container } from 'react-bootstrap';
-import styles from './404.module.css';
+"use client"
 
-export default function FourOhFour() {
+import Link from 'next/link';
+import { Container } from 'react-bootstrap';
+import styles from './not-found.module.css';
+
+export default function Custom404() {
   return (
     <>
-      <LamacNavbar />
       <Container className={styles.NotFoundContainer}>
         <div className='text-center'>
           <h1>Ops...</h1>
