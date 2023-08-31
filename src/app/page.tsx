@@ -16,8 +16,10 @@ export default function IndexPage() {
   const [isConfigsModalVisible, setConfigsModalVisible] = useState(false);
 
   useEffect(() => {
-    if (getCookie("disableIntro")) {
+    if (getCookie("disableIntro") || sessionStorage.getItem("introPlayed")) {
       setShowIntro(false);
+    } else {
+      sessionStorage.setItem("introPlayed", "true");
     }
 
     setMounted(true);

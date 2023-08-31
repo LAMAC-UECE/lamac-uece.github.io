@@ -16,10 +16,10 @@ function LamacNavbar() {
 
   useEffect(() => {
     if (window.location.pathname === "/") {
-      if (!getCookie("disableIntro")) {
+      if (!(getCookie("disableIntro") || sessionStorage.getItem("introPlayed"))) {
         setBrandDelayed(true);
       }
-    } 
+    }
   }, [])
 
   const HomeTitle = (<span><AiOutlineHome /> Home</span>);
