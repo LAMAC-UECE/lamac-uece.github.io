@@ -32,25 +32,6 @@ code {
   --bs-btn-disabled-border-color: #868e91;
 }
 
-.form-switch .form-check-input:focus {
-  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2371c168'/%3e%3c/svg%3e");
-}
-
-.form-check-input:checked.form-check-input:focus {
-  background-color: #d6fdc8;
-}
-
-.form-check-input:checked {
-  background-color: #7dc164;
-  border-color: #7dc164;
-}
-
-.form-check-input:focus {
-  border-color: #b1daa2;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem #b1daa2;
-}
-
 @media (max-width: 991px) {
   .nav-item.dropdown:hover .dropdown-menu {
     text-align: center;
