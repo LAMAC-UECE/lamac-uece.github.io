@@ -35,7 +35,7 @@ function LamacNavbar() {
           <Image src={brand} width={250} alt="LaMaC Logo White" priority />
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className={brandDelayed ? styles.NavbarNavDelayed : ''} />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className={brandDelayed ? styles.NavbarToggleDelayed : ''} />
         <Navbar.Collapse
           id="basic-navbar-nav"
           className={`${styles.NavbarNav} ${styles.NavbarCollapse} ${brandDelayed ? styles.NavbarNavDelayed : ''}`}

@@ -8,7 +8,7 @@ function InteractiveCGModel({delayed=false}) {
     if (delayed) {
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 4000);
+      }, 6500);
   
       return () => {
         clearTimeout(timer);
