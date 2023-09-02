@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './InteractiveCGModel.module.css'
+import { helloWorldGL } from '../../static/ts/cg/webglHw';
 
 function InteractiveCGModel({delayed=false}) {
   const [isVisible, setIsVisible] = useState(false);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     if (delayed) {
@@ -18,10 +20,16 @@ function InteractiveCGModel({delayed=false}) {
     }
   }, []);
 
+  useEffect(() => {
+    if (canvasRef.current) {
+      helloWorldGL(canvasRef.current);
+    }
+  }, [isVisible]);
+
   return (
     isVisible ? (
       <div className={styles.HomeGlCanvasContainer}>
-        <canvas id="glcanvas" className={`${styles.HomeGlCanvas} ${delayed ? styles.DelayedAnim : ''}`}></canvas>
+        <canvas ref={canvasRef} className={`${styles.HomeGlCanvas} ${delayed ? styles.DelayedAnim : ''}`}></canvas>
       </div>
     ) : <></>
   )
