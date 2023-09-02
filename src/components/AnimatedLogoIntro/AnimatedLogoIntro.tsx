@@ -15,7 +15,7 @@ const AnimatedLogoIntro = () => {
   }, []);
 
   return (
-    isVisible && (
+    isVisible ? (
       <section className={styles.AnimatedLogoIntro}>
         <div className="container">
           <div className="row">
@@ -29,7 +29,7 @@ const AnimatedLogoIntro = () => {
           </div>
         </div>
       </section>
-    )
+    ) : <></>
   );
 };
 

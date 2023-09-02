@@ -30,7 +30,7 @@ function ConfigsGear(props: {
   );
 
   return (
-    isVisible && 
+    isVisible ?
     <OverlayTrigger
       placement="top"
       delay={{ show: 250, hide: 250 }}
@@ -42,7 +42,7 @@ function ConfigsGear(props: {
         alt="Configurations Gear" 
         onClick={() => props.toggleConfigsModalVisibility(true)}
       />
-    </OverlayTrigger>
+    </OverlayTrigger> : <></>
   )
 }
 

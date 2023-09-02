@@ -19,11 +19,11 @@ function InteractiveCGModel({delayed=false}) {
   }, []);
 
   return (
-    isVisible && (
+    isVisible ? (
       <div className={styles.HomeGlCanvasContainer}>
         <canvas id="glcanvas" className={`${styles.HomeGlCanvas} ${delayed ? styles.DelayedAnim : ''}`}></canvas>
       </div>
-    )
+    ) : <></>
   )
 }
 
