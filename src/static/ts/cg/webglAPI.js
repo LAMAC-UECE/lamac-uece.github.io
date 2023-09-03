@@ -42,3 +42,33 @@ export function createProgram(gl, vertexShader, fragmentShader) {
   gl.deleteProgram(program);
   throw new Error(`Failed to create program! Error: "${err}"`);
 }
+
+/**
+ * Draw a rectangle on the screen
+ * @param {WebGLRenderingContext} gl - WebGL rendering context
+ * @param {number} x - bottom left corner x coordinate (if vertex shader directly convers pixel to clip space)
+ * @param {number} y - bottom left corner y coordinate (if vertex shader directly convers pixel to clip space)
+ * @param {number} width - Rect width
+ * @param {number} height - Rect height
+ */
+export function drawRectangle(gl, x, y, width, height) {
+  var x1 = x;
+  var x2 = x + width;
+  var y1 = y;
+  var y2 = y + height;
+
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+    x1, y1,
+    x2, y1,
+    x1, y2,
+    x1, y2,
+    x2, y1,
+    x2, y2,
+  ]), gl.STATIC_DRAW);
+
+  // draw
+  var primitiveType = gl.TRIANGLES;
+  var offset = 0;
+  var count = 6;
+  gl.drawArrays(primitiveType, offset, count);
+}
