@@ -1,4 +1,4 @@
-import { createProgram, createShader } from "./webglAPI";
+import { createProgram, createShader, drawRectangle } from "./webglAPI";
 import webglUtils from "./webgl-utils";
 
 const vertexShaderSource = `
@@ -21,9 +21,10 @@ const vertexShaderSource = `
 
 const fragmentShaderSource = `
   precision mediump float;
+  uniform vec4 u_color;
 
   void main() {
-    gl_FragColor = vec4(1, 0, 0.5, 1);
+    gl_FragColor = u_color;
   }
 `;
 
@@ -53,17 +54,6 @@ export function helloWorldGL(canvas) {
 
   // Create a buffer and bind it to ARRAY_BUFFER
   var positionBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer); // think of it as ARRAY_BUFFER = positionBuffer
-
-  // three 2d points
-  var positions = [
-    250, 200,
-    400, 250,
-    250, 300,
-  ];
-
-  // put three 2d clip space points in the positionBuffer
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
   // code above this line is initialization code.
   // code below this line is rendering code.
@@ -97,10 +87,11 @@ export function helloWorldGL(canvas) {
   var offset = 0;        // start at the beginning of the buffer
   gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
 
-  // draw
-  var primitiveType = gl.TRIANGLES;
-  var offset = 0;
-  var count = 3;
-  gl.drawArrays(primitiveType, offset, count);
+  // Set the color
+  var colorUniformLocation = gl.getUniformLocation(program, "u_color");
+  gl.uniform4f(colorUniformLocation, 0.0, 0.0, 0.5, 1.0);
+
+  // Draw the rect.
+  drawRectangle(gl, 200, 200, 200, 100);
 }
 
