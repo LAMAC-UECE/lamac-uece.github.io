@@ -51,6 +51,7 @@ export function helloWorldGL(canvas) {
   // look up where the vertex data needs to go.
   var positionAttributeLocation = gl.getAttribLocation(program, "a_position");
   var resolutionUniformLocation = gl.getUniformLocation(program, "u_resolution");
+  var colorUniformLocation = gl.getUniformLocation(program, "u_color");
 
   // Create a buffer and bind it to ARRAY_BUFFER
   var positionBuffer = gl.createBuffer();
@@ -88,7 +89,6 @@ export function helloWorldGL(canvas) {
   gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
 
   // Set the color
-  var colorUniformLocation = gl.getUniformLocation(program, "u_color");
   gl.uniform4f(colorUniformLocation, 0.0, 0.0, 0.5, 1.0);
 
   // Draw the rect.
