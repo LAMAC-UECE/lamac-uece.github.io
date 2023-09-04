@@ -4,10 +4,14 @@ import webglUtils from "./webgl-utils";
 const vertexShaderSource = `
   attribute vec2 a_position;
   uniform vec2 u_resolution;
+  uniform vec2 u_translation;
 
   void main() {
+    // Add in the translation
+    vec2 position = a_position + u_translation;
+
     // convert the position from pixels to 0.0 to 1.0
-    vec2 zeroToOne = a_position / u_resolution;
+    vec2 zeroToOne = position / u_resolution;
 
     // convert from 0->1 to 0->2
     vec2 zeroToTwo = zeroToOne * 2.0;
@@ -15,7 +19,7 @@ const vertexShaderSource = `
     // convert from 0->2 to -1->+1 (clip space)
     vec2 clipSpace = zeroToTwo - 1.0;
 
-    gl_Position = vec4(clipSpace, 0, 1);
+    gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
   }
 `;
 
@@ -52,6 +56,7 @@ export function helloWorldGL(canvas) {
   var positionAttributeLocation = gl.getAttribLocation(program, "a_position");
   var resolutionUniformLocation = gl.getUniformLocation(program, "u_resolution");
   var colorUniformLocation = gl.getUniformLocation(program, "u_color");
+  var translationUniformLocation = gl.getUniformLocation(program, "u_translation");
 
   // Create a buffer and bind it to ARRAY_BUFFER
   var positionBuffer = gl.createBuffer();
@@ -59,39 +64,83 @@ export function helloWorldGL(canvas) {
   // code above this line is initialization code.
   // code below this line is rendering code.
 
-  webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+  drawScene();
 
-  // Tell WebGL how to convert from clip space to pixels
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+  function drawScene() {
+    var translation = [100, 100];
+    var color = [Math.random(), Math.random(), Math.random(), 1];
 
-  // Clear the canvas
-  gl.clearColor(0, 0, 0, 0);
-  gl.clear(gl.COLOR_BUFFER_BIT);
+    webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
-  // Tell it to use our program (pair of shaders)
-  gl.useProgram(program);
+    // Tell WebGL how to convert from clip space to pixels
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
-  // set the resolution
-  gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
+    // Clear the canvas.
+    gl.clear(gl.COLOR_BUFFER_BIT);
 
-  // Turn on the attribute
-  gl.enableVertexAttribArray(positionAttributeLocation);
+    // Tell it to use our program (pair of shaders)
+    gl.useProgram(program);
 
-  // Bind the position buffer.
-  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    // set the resolution
+    gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
 
-  // Tell the attribute how to get data out of positionBuffer (ARRAY_BUFFER)
-  var size = 2;          // 2 components per iteration
-  var type = gl.FLOAT;   // the data is 32bit floats
-  var normalize = false; // don't normalize the data
-  var stride = 0;        // 0 = move forward size * sizeof(type) each iteration to get the next position
-  var offset = 0;        // start at the beginning of the buffer
-  gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
+    // set the color
+    gl.uniform4fv(colorUniformLocation, color);
 
-  // Set the color
-  gl.uniform4f(colorUniformLocation, 0.0, 0.0, 0.5, 1.0);
+    // Turn on the attribute
+    gl.enableVertexAttribArray(positionAttributeLocation);
 
-  // Draw the rect.
-  drawRectangle(gl, 200, 200, 200, 100);
+    // Bind the position buffer.
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    // Tell the attribute how to get data out of positionBuffer (ARRAY_BUFFER)
+    var size = 2;          // 2 components per iteration
+    var type = gl.FLOAT;   // the data is 32bit floats
+    var normalize = false; // don't normalize the data
+    var stride = 0;        // 0 = move forward size * sizeof(type) each iteration to get the next position
+    var offset = 0;        // start at the beginning of the buffer
+    gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
+
+    setGeometry(gl);
+
+    gl.uniform2fv(translationUniformLocation, translation);
+
+    // draw
+    var primitiveType = gl.TRIANGLES;
+    var offset = 0;
+    var count = 18;
+    gl.drawArrays(primitiveType, offset, count);
+  }
+
+  function setGeometry(gl) {
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([
+        // left column
+        0, 0,
+        30, 0,
+        0, 150,
+        0, 150,
+        30, 0,
+        30, 150,
+
+        // top rung
+        30, 0,
+        100, 0,
+        30, 30,
+        30, 30,
+        100, 0,
+        100, 30,
+
+        // middle rung
+        30, 60,
+        67, 60,
+        30, 90,
+        30, 90,
+        67, 60,
+        67, 90,
+      ]),
+      gl.STATIC_DRAW);
+  }
 }
 
