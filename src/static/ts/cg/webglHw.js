@@ -6,12 +6,16 @@ const vertexShaderSource = `
   uniform vec2 u_resolution;
   uniform vec2 u_translation;
   uniform vec2 u_rotation;
+  uniform vec2 u_scale;
 
   void main() {
+    // Scale the position
+    vec2 scaledPosition = a_position * u_scale;
+
     // Rotate the position
     vec2 rotatedPosition = vec2(
-      a_position.x * u_rotation.y + a_position.y * u_rotation.x,
-      a_position.y * u_rotation.y - a_position.x * u_rotation.x
+      scaledPosition.x * u_rotation.y + scaledPosition.y * u_rotation.x,
+      scaledPosition.y * u_rotation.y - scaledPosition.x * u_rotation.x
     );
 
     // Add in the translation
@@ -65,6 +69,7 @@ export function helloWorldGL(canvas) {
   var colorUniformLocation = gl.getUniformLocation(program, "u_color");
   var translationUniformLocation = gl.getUniformLocation(program, "u_translation");
   var rotationUniformLocation = gl.getUniformLocation(program, "u_rotation");
+  var scaleUniformLocation = gl.getUniformLocation(program, "u_scale");
 
   // Create a buffer and bind it to ARRAY_BUFFER
   var positionBuffer = gl.createBuffer();
@@ -76,6 +81,7 @@ export function helloWorldGL(canvas) {
 
   function drawScene() {
     var translation = [100, 100];
+    var scale = [1.5, 2];
     var rotation = getRotationVector(30.0);
     var color = [Math.random(), Math.random(), Math.random(), 1];
 
@@ -117,6 +123,9 @@ export function helloWorldGL(canvas) {
 
     // Set the rotation
     gl.uniform2fv(rotationUniformLocation, rotation);
+
+    // Set the scale
+    gl.uniform2fv(scaleUniformLocation, scale);
 
     // draw
     var primitiveType = gl.TRIANGLES;
