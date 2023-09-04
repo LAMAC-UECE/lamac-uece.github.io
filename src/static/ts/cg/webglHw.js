@@ -5,10 +5,17 @@ const vertexShaderSource = `
   attribute vec2 a_position;
   uniform vec2 u_resolution;
   uniform vec2 u_translation;
+  uniform vec2 u_rotation;
 
   void main() {
+    // Rotate the position
+    vec2 rotatedPosition = vec2(
+      a_position.x * u_rotation.y + a_position.y * u_rotation.x,
+      a_position.y * u_rotation.y - a_position.x * u_rotation.x
+    );
+
     // Add in the translation
-    vec2 position = a_position + u_translation;
+    vec2 position = rotatedPosition + u_translation;
 
     // convert the position from pixels to 0.0 to 1.0
     vec2 zeroToOne = position / u_resolution;
@@ -57,6 +64,7 @@ export function helloWorldGL(canvas) {
   var resolutionUniformLocation = gl.getUniformLocation(program, "u_resolution");
   var colorUniformLocation = gl.getUniformLocation(program, "u_color");
   var translationUniformLocation = gl.getUniformLocation(program, "u_translation");
+  var rotationUniformLocation = gl.getUniformLocation(program, "u_rotation");
 
   // Create a buffer and bind it to ARRAY_BUFFER
   var positionBuffer = gl.createBuffer();
@@ -68,6 +76,7 @@ export function helloWorldGL(canvas) {
 
   function drawScene() {
     var translation = [100, 100];
+    var rotation = getRotationVector(30.0);
     var color = [Math.random(), Math.random(), Math.random(), 1];
 
     webglUtils.resizeCanvasToDisplaySize(gl.canvas);
@@ -103,7 +112,11 @@ export function helloWorldGL(canvas) {
 
     setGeometry(gl);
 
+    // Set the translation
     gl.uniform2fv(translationUniformLocation, translation);
+
+    // Set the rotation
+    gl.uniform2fv(rotationUniformLocation, rotation);
 
     // draw
     var primitiveType = gl.TRIANGLES;
@@ -144,3 +157,7 @@ export function helloWorldGL(canvas) {
   }
 }
 
+function getRotationVector(angle) {
+  var angleInRadians = angle * Math.PI / 180.0;
+  return [Math.sin(angleInRadians), Math.cos(angleInRadians)];
+}
