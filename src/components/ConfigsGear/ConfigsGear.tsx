@@ -21,6 +21,7 @@ function ConfigsGear(props: {
     else {
       setIsVisible(true);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderTooltip = (props: any) => (

@@ -1,4 +1,4 @@
-import { createProgram, createShader, drawRectangle, m3 } from "./webglAPI";
+import { createProgram, createShader, m3 } from "./webglAPI";
 import webglUtils from "./webgl-utils";
 
 const vertexShaderSource = `
@@ -98,9 +98,9 @@ export function helloWorldGL(canvas) {
 
     // draw
     var primitiveType = gl.TRIANGLES;
-    var offset = 0;
+    var primitiveOffset = 0;
     var count = 18;
-    gl.drawArrays(primitiveType, offset, count);
+    gl.drawArrays(primitiveType, primitiveOffset, count);
   }
 
   function setGeometry(gl) {
