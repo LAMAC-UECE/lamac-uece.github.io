@@ -1,5 +1,4 @@
-import { createProgram, createShader, m3 } from "./webglAPI";
-import webglUtils from "./webgl-utils";
+import { createProgram, createShader, m3, resizeCanvasToDisplaySize } from "./webglAPI";
 
 const vertexShaderSource = `
   attribute vec2 a_position;
@@ -58,7 +57,7 @@ export function helloWorldGL(canvas) {
   drawScene();
 
   function drawScene() {
-    webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+    resizeCanvasToDisplaySize(gl.canvas);
 
     // Tell WebGL how to convert from clip space to pixels
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
