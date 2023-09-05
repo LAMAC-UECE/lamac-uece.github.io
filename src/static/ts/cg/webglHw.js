@@ -1,36 +1,12 @@
-import { createProgram, createShader, drawRectangle } from "./webglAPI";
+import { createProgram, createShader, drawRectangle, m3 } from "./webglAPI";
 import webglUtils from "./webgl-utils";
 
 const vertexShaderSource = `
   attribute vec2 a_position;
-  uniform vec2 u_resolution;
-  uniform vec2 u_translation;
-  uniform vec2 u_rotation;
-  uniform vec2 u_scale;
+  uniform mat3 u_matrix;
 
   void main() {
-    // Scale the position
-    vec2 scaledPosition = a_position * u_scale;
-
-    // Rotate the position
-    vec2 rotatedPosition = vec2(
-      scaledPosition.x * u_rotation.y + scaledPosition.y * u_rotation.x,
-      scaledPosition.y * u_rotation.y - scaledPosition.x * u_rotation.x
-    );
-
-    // Add in the translation
-    vec2 position = rotatedPosition + u_translation;
-
-    // convert the position from pixels to 0.0 to 1.0
-    vec2 zeroToOne = position / u_resolution;
-
-    // convert from 0->1 to 0->2
-    vec2 zeroToTwo = zeroToOne * 2.0;
-
-    // convert from 0->2 to -1->+1 (clip space)
-    vec2 clipSpace = zeroToTwo - 1.0;
-
-    gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
+    gl_Position = vec4((u_matrix * vec3(a_position, 1)).xy, 0, 1);
   }
 `;
 
@@ -65,11 +41,8 @@ export function helloWorldGL(canvas) {
 
   // look up where the vertex data needs to go.
   var positionAttributeLocation = gl.getAttribLocation(program, "a_position");
-  var resolutionUniformLocation = gl.getUniformLocation(program, "u_resolution");
   var colorUniformLocation = gl.getUniformLocation(program, "u_color");
-  var translationUniformLocation = gl.getUniformLocation(program, "u_translation");
-  var rotationUniformLocation = gl.getUniformLocation(program, "u_rotation");
-  var scaleUniformLocation = gl.getUniformLocation(program, "u_scale");
+  var matrixUniformLocation = gl.getUniformLocation(program, "u_matrix");
 
   // Create a buffer and bind it to ARRAY_BUFFER
   var positionBuffer = gl.createBuffer();
@@ -77,14 +50,14 @@ export function helloWorldGL(canvas) {
   // code above this line is initialization code.
   // code below this line is rendering code.
 
+  var scale = [1.5, 2];
+  var rotationAngle = Math.PI / 6; // In radians
+  var translation = [100, 100];
+  var color = [Math.random(), Math.random(), Math.random(), 1];
+
   drawScene();
 
   function drawScene() {
-    var translation = [100, 100];
-    var scale = [1.5, 2];
-    var rotation = getRotationVector(30.0);
-    var color = [Math.random(), Math.random(), Math.random(), 1];
-
     webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
     // Tell WebGL how to convert from clip space to pixels
@@ -95,9 +68,6 @@ export function helloWorldGL(canvas) {
 
     // Tell it to use our program (pair of shaders)
     gl.useProgram(program);
-
-    // set the resolution
-    gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
 
     // set the color
     gl.uniform4fv(colorUniformLocation, color);
@@ -118,14 +88,13 @@ export function helloWorldGL(canvas) {
 
     setGeometry(gl);
 
-    // Set the translation
-    gl.uniform2fv(translationUniformLocation, translation);
+    // Compute the operation matrix
+    var matrix = m3.projectionMatrix(gl.canvas.clientWidth, gl.canvas.clientHeight);
+    matrix = m3.translate(matrix, translation[0], translation[1]);
+    matrix = m3.rotate(matrix, rotationAngle);
+    matrix = m3.scale(matrix, scale[0], scale[1]);
 
-    // Set the rotation
-    gl.uniform2fv(rotationUniformLocation, rotation);
-
-    // Set the scale
-    gl.uniform2fv(scaleUniformLocation, scale);
+    gl.uniformMatrix3fv(matrixUniformLocation, false, matrix);
 
     // draw
     var primitiveType = gl.TRIANGLES;
@@ -164,9 +133,4 @@ export function helloWorldGL(canvas) {
       ]),
       gl.STATIC_DRAW);
   }
-}
-
-function getRotationVector(angle) {
-  var angleInRadians = angle * Math.PI / 180.0;
-  return [Math.sin(angleInRadians), Math.cos(angleInRadians)];
 }
