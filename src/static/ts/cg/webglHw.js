@@ -1,4 +1,5 @@
 import { createProgram, createShader, m4, resizeCanvasToDisplaySize } from "./webglAPI";
+import webglLessonsUi from "./webglLessonsUi";
 
 const vertexShaderSource = `
   attribute vec4 a_position;
@@ -72,12 +73,24 @@ export function helloWorldGL(canvas) {
   // code above this line is initialization code.
   // code below this line is rendering code.
 
-  var translation = [-70, 30, -230];
-  var rotation = [degToRad(200), degToRad(50), degToRad(320)];
-  var scale = [1, 1, 1];
+  var cameraAngleRadians = degToRad(0);
   var fieldOfViewRadians = degToRad(60);
 
   drawScene();
+
+  // Setup a ui.
+  webglLessonsUi.setupSlider(
+    "#cameraAngle",
+    {
+      value: radToDeg(cameraAngleRadians),
+      slide: updateCameraAngle, min: -360, max: 360
+    }
+  );
+
+  function updateCameraAngle(event, ui) {
+    cameraAngleRadians = degToRad(ui.value);
+    drawScene();
+  }
 
   function drawScene() {
     resizeCanvasToDisplaySize(gl.canvas);
@@ -126,159 +139,209 @@ export function helloWorldGL(canvas) {
     var offset = 0;               // start at the beginning of the buffer
     gl.vertexAttribPointer(colorAttributeLocation, size, type, normalize, stride, offset);
 
+    var numFs = 5;
+    var radius = 200;
+
     // Compute the operation matrix
     var aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
     var zNear = 1;
     var zFar = 2000;
-    var matrix = m4.perspectiveMatrix(fieldOfViewRadians, aspect, zNear, zFar);
-    matrix = m4.translate(matrix, translation[0], translation[1], translation[2]);
-    matrix = m4.xRotate(matrix, rotation[0]);
-    matrix = m4.yRotate(matrix, rotation[1]);
-    matrix = m4.zRotate(matrix, rotation[2]);
-    matrix = m4.scale(matrix, scale[0], scale[1], scale[2]);
+    var projectionMatrix = m4.perspectiveMatrix(fieldOfViewRadians, aspect, zNear, zFar);
 
-    // Set the matrix.
-    gl.uniformMatrix4fv(matrixUniformLocation, false, matrix);
+    // Compute the position of the first F
+    var fPosition = [radius, 0, 0];
 
-    // draw
-    var primitiveType = gl.TRIANGLES;
-    var primitiveOffset = 0;
-    var count = 16 * 6; // 16 rectangles (2 triangles each and 3 vertices per triangle)
-    gl.drawArrays(primitiveType, primitiveOffset, count);
+    // Use matrix math to compute a position on a circle where
+    // the camera is
+    var cameraMatrix = m4.yRotationMatrix(cameraAngleRadians);
+    cameraMatrix = m4.translate(cameraMatrix, 0, 0, radius * 1.5);
+
+    // Get the camera's position from the matrix we computed
+    var cameraPosition = [
+      cameraMatrix[12],
+      cameraMatrix[13],
+      cameraMatrix[14],
+    ];
+
+    var up = [0, 1, 0];
+
+    // Compute the camera's matrix using look at.
+    var cameraMatrix = m4.lookAt(cameraPosition, fPosition, up);
+
+    // Make a view matrix from the camera matrix
+    var viewMatrix = m4.inverse(cameraMatrix);
+
+    // Compute a view projection matrix
+    var viewProjectionMatrix = m4.multiply(projectionMatrix, viewMatrix);
+
+    for (var ii = 0; ii < numFs; ++ii) {
+      var angle = ii * Math.PI * 2 / numFs;
+      var x = Math.cos(angle) * radius;
+      var y = Math.sin(angle) * radius;
+
+      // starting with the view projection matrix
+      // compute a matrix for the F
+      var matrix = m4.translate(viewProjectionMatrix, x, 0, y);
+
+      // Set the matrix.
+      gl.uniformMatrix4fv(matrixUniformLocation, false, matrix);
+
+      // Draw the geometry.
+      var primitiveType = gl.TRIANGLES;
+      var offset = 0;
+      var count = 16 * 6;
+      gl.drawArrays(primitiveType, offset, count);
+    }
   }
 
   function setGeometry(gl) {
-    gl.bufferData(
-      gl.ARRAY_BUFFER,
-      new Float32Array([
-        // left column front
-        0, 0, 0,
-        0, 150, 0,
-        30, 0, 0,
-        0, 150, 0,
-        30, 150, 0,
-        30, 0, 0,
+    var positions = new Float32Array([
+      // left column front
+      0, 0, 0,
+      0, 150, 0,
+      30, 0, 0,
+      0, 150, 0,
+      30, 150, 0,
+      30, 0, 0,
 
-        // top rung front
-        30, 0, 0,
-        30, 30, 0,
-        100, 0, 0,
-        30, 30, 0,
-        100, 30, 0,
-        100, 0, 0,
+      // top rung front
+      30, 0, 0,
+      30, 30, 0,
+      100, 0, 0,
+      30, 30, 0,
+      100, 30, 0,
+      100, 0, 0,
 
-        // middle rung front
-        30, 60, 0,
-        30, 90, 0,
-        67, 60, 0,
-        30, 90, 0,
-        67, 90, 0,
-        67, 60, 0,
+      // middle rung front
+      30, 60, 0,
+      30, 90, 0,
+      67, 60, 0,
+      30, 90, 0,
+      67, 90, 0,
+      67, 60, 0,
 
-        // left column back
-        0, 0, 30,
-        30, 0, 30,
-        0, 150, 30,
-        0, 150, 30,
-        30, 0, 30,
-        30, 150, 30,
+      // left column back
+      0, 0, 30,
+      30, 0, 30,
+      0, 150, 30,
+      0, 150, 30,
+      30, 0, 30,
+      30, 150, 30,
 
-        // top rung back
-        30, 0, 30,
-        100, 0, 30,
-        30, 30, 30,
-        30, 30, 30,
-        100, 0, 30,
-        100, 30, 30,
+      // top rung back
+      30, 0, 30,
+      100, 0, 30,
+      30, 30, 30,
+      30, 30, 30,
+      100, 0, 30,
+      100, 30, 30,
 
-        // middle rung back
-        30, 60, 30,
-        67, 60, 30,
-        30, 90, 30,
-        30, 90, 30,
-        67, 60, 30,
-        67, 90, 30,
+      // middle rung back
+      30, 60, 30,
+      67, 60, 30,
+      30, 90, 30,
+      30, 90, 30,
+      67, 60, 30,
+      67, 90, 30,
 
-        // top
-        0, 0, 0,
-        100, 0, 0,
-        100, 0, 30,
-        0, 0, 0,
-        100, 0, 30,
-        0, 0, 30,
+      // top
+      0, 0, 0,
+      100, 0, 0,
+      100, 0, 30,
+      0, 0, 0,
+      100, 0, 30,
+      0, 0, 30,
 
-        // top rung right
-        100, 0, 0,
-        100, 30, 0,
-        100, 30, 30,
-        100, 0, 0,
-        100, 30, 30,
-        100, 0, 30,
+      // top rung right
+      100, 0, 0,
+      100, 30, 0,
+      100, 30, 30,
+      100, 0, 0,
+      100, 30, 30,
+      100, 0, 30,
 
-        // under top rung
-        30, 30, 0,
-        30, 30, 30,
-        100, 30, 30,
-        30, 30, 0,
-        100, 30, 30,
-        100, 30, 0,
+      // under top rung
+      30, 30, 0,
+      30, 30, 30,
+      100, 30, 30,
+      30, 30, 0,
+      100, 30, 30,
+      100, 30, 0,
 
-        // between top rung and middle
-        30, 30, 0,
-        30, 60, 30,
-        30, 30, 30,
-        30, 30, 0,
-        30, 60, 0,
-        30, 60, 30,
+      // between top rung and middle
+      30, 30, 0,
+      30, 60, 30,
+      30, 30, 30,
+      30, 30, 0,
+      30, 60, 0,
+      30, 60, 30,
 
-        // top of middle rung
-        30, 60, 0,
-        67, 60, 30,
-        30, 60, 30,
-        30, 60, 0,
-        67, 60, 0,
-        67, 60, 30,
+      // top of middle rung
+      30, 60, 0,
+      67, 60, 30,
+      30, 60, 30,
+      30, 60, 0,
+      67, 60, 0,
+      67, 60, 30,
 
-        // right of middle rung
-        67, 60, 0,
-        67, 90, 30,
-        67, 60, 30,
-        67, 60, 0,
-        67, 90, 0,
-        67, 90, 30,
+      // right of middle rung
+      67, 60, 0,
+      67, 90, 30,
+      67, 60, 30,
+      67, 60, 0,
+      67, 90, 0,
+      67, 90, 30,
 
-        // bottom of middle rung.
-        30, 90, 0,
-        30, 90, 30,
-        67, 90, 30,
-        30, 90, 0,
-        67, 90, 30,
-        67, 90, 0,
+      // bottom of middle rung.
+      30, 90, 0,
+      30, 90, 30,
+      67, 90, 30,
+      30, 90, 0,
+      67, 90, 30,
+      67, 90, 0,
 
-        // right of bottom
-        30, 90, 0,
-        30, 150, 30,
-        30, 90, 30,
-        30, 90, 0,
-        30, 150, 0,
-        30, 150, 30,
+      // right of bottom
+      30, 90, 0,
+      30, 150, 30,
+      30, 90, 30,
+      30, 90, 0,
+      30, 150, 0,
+      30, 150, 30,
 
-        // bottom
-        0, 150, 0,
-        0, 150, 30,
-        30, 150, 30,
-        0, 150, 0,
-        30, 150, 30,
-        30, 150, 0,
+      // bottom
+      0, 150, 0,
+      0, 150, 30,
+      30, 150, 30,
+      0, 150, 0,
+      30, 150, 30,
+      30, 150, 0,
 
-        // left side
-        0, 0, 0,
-        0, 0, 30,
-        0, 150, 30,
-        0, 0, 0,
-        0, 150, 30,
-        0, 150, 0]),
-      gl.STATIC_DRAW);
+      // left side
+      0, 0, 0,
+      0, 0, 30,
+      0, 150, 30,
+      0, 0, 0,
+      0, 150, 30,
+      0, 150, 0]);
+
+    // Center the F around the origin and Flip it around. We do this because
+    // we're in 3D now with and +Y is up where as before when we started with 2D
+    // we had +Y as down.
+
+    // We could do by changing all the values above but I'm lazy.
+    // We could also do it with a matrix at draw time but you should
+    // never do stuff at draw time if you can do it at init time.
+    var matrix = m4.xRotationMatrix(Math.PI);
+    matrix = m4.translate(matrix, -50, -75, -15);
+
+    for (var ii = 0; ii < positions.length; ii += 3) {
+      var vector = m4.vectorMultiply([positions[ii + 0], positions[ii + 1], positions[ii + 2], 1], matrix);
+      positions[ii + 0] = vector[0];
+      positions[ii + 1] = vector[1];
+      positions[ii + 2] = vector[2];
+    }
+
+    gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
   }
 
   function setColors(gl) {
@@ -418,4 +481,8 @@ export function helloWorldGL(canvas) {
 
 function degToRad(d) {
   return d * Math.PI / 180;
+}
+
+function radToDeg(r) {
+  return r * 180 / Math.PI;
 }
