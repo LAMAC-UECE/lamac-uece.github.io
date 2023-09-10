@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import styles from './InteractiveCGModel.module.css'
+import React, { useEffect, useRef, useState } from 'react';
+import styles from './InteractiveCGModel.module.css';
 import { helloWorldGL } from '../../static/ts/cg/webglHw';
 
-function InteractiveCGModel({delayed=false}) {
+function InteractiveCGModel({ delayed = false }) {
   const [isVisible, setIsVisible] = useState(false);
   const canvasRef = useRef(null);
 
@@ -11,14 +11,14 @@ function InteractiveCGModel({delayed=false}) {
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 6500);
-  
+
       return () => {
         clearTimeout(timer);
       };
     } else {
       setIsVisible(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -31,9 +31,14 @@ function InteractiveCGModel({delayed=false}) {
     isVisible ? (
       <div className={styles.HomeGlCanvasContainer}>
         <canvas ref={canvasRef} className={`${styles.HomeGlCanvas} ${delayed ? styles.DelayedAnim : ''}`}></canvas>
+        <div id="uiContainer" className={styles.uiContainer}>
+          <div id="ui" className={styles.ui}>
+            <div id="cameraAngle"></div>
+          </div>
+        </div>
       </div>
     ) : <></>
-  )
+  );
 }
 
-export default InteractiveCGModel
+export default InteractiveCGModel;
