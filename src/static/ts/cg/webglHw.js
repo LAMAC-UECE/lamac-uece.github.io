@@ -72,9 +72,10 @@ export function helloWorldGL(canvas) {
   // code above this line is initialization code.
   // code below this line is rendering code.
 
-  var translation = [45, 150, 0];
-  var rotation = [degToRad(40), degToRad(25), degToRad(325)];
+  var translation = [-70, 30, -230];
+  var rotation = [degToRad(200), degToRad(50), degToRad(320)];
   var scale = [1, 1, 1];
+  var fieldOfViewRadians = degToRad(60);
 
   drawScene();
 
@@ -126,7 +127,10 @@ export function helloWorldGL(canvas) {
     gl.vertexAttribPointer(colorAttributeLocation, size, type, normalize, stride, offset);
 
     // Compute the operation matrix
-    var matrix = m4.projectionMatrix(gl.canvas.clientWidth, gl.canvas.clientHeight, 400);
+    var aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+    var zNear = 1;
+    var zFar = 2000;
+    var matrix = m4.perspectiveMatrix(fieldOfViewRadians, aspect, zNear, zFar);
     matrix = m4.translate(matrix, translation[0], translation[1], translation[2]);
     matrix = m4.xRotate(matrix, rotation[0]);
     matrix = m4.yRotate(matrix, rotation[1]);
