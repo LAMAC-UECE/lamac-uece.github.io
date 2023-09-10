@@ -84,7 +84,7 @@ function LamacNavbar() {
             <Nav.Link href="/productions">{ProductionsTitle}</Nav.Link>
 
             {/* Contact */}
-            <Nav.Link>{ContactTitle}</Nav.Link>
+            <Nav.Link href="/contact">{ContactTitle}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
