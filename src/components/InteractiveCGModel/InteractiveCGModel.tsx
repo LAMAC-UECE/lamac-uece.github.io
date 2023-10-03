@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './InteractiveCGModel.module.css';
-import { helloWorldGL } from '../../static/ts/cg/webglHw';
+import { LamacLogoCG } from '../../static/ts/cg/LamacLogo';
 
 function InteractiveCGModel({ delayed = false }) {
   const [isVisible, setIsVisible] = useState(false);
-  const canvasRef = useRef(null);
+  const threeJsContainerRef = useRef(null);
 
   useEffect(() => {
     if (delayed) {
@@ -22,21 +22,14 @@ function InteractiveCGModel({ delayed = false }) {
   }, []);
 
   useEffect(() => {
-    if (canvasRef.current) {
-      helloWorldGL(canvasRef.current);
+    if (threeJsContainerRef.current) {
+      LamacLogoCG(threeJsContainerRef.current);
     }
   }, [isVisible]);
 
   return (
     isVisible ? (
-      <div className={styles.HomeGlCanvasContainer}>
-        <canvas ref={canvasRef} className={`${styles.HomeGlCanvas} ${delayed ? styles.DelayedAnim : ''}`}></canvas>
-        <div id="uiContainer" className={styles.uiContainer}>
-          <div id="ui" className={styles.ui}>
-            <div id="cameraAngle"></div>
-          </div>
-        </div>
-      </div>
+      <div className={styles.HomeGlCanvasContainer} ref={threeJsContainerRef}></div>
     ) : <></>
   );
 }
