@@ -29,7 +29,12 @@ function InteractiveCGModel({ delayed = false }) {
 
   return (
     isVisible ? (
-      <div className={styles.HomeGlCanvasContainer} ref={threeJsContainerRef}></div>
+      <div className={styles.HomeGlCanvasContainer}>
+        <div 
+          ref={threeJsContainerRef}
+          className={`${styles.HomeGlCanvas} ${delayed ? styles.DelayedAnim : ''}`}
+        ></div>
+      </div>
     ) : <></>
   );
 }
