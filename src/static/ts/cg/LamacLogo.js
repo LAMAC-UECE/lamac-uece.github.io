@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
 
 
 export function LamacLogoCG(canvas) {
@@ -39,11 +41,31 @@ export function LamacLogoCG(canvas) {
     directionalLight5.position.set(-0.8, -0.5, 1);
     scene.add(directionalLight5);
 
+    const directionalLight6 = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight6.position.set(0, 0, 1);
+    scene.add(directionalLight6);
+
     const loader = new GLTFLoader();
     loader.load('/models/lamac.glb', function (gltf) {
         model = gltf.scene
         model.translateY(-0.3)
-        scene.add(model);
+
+        const pmremGenerator = new THREE.PMREMGenerator(renderer);
+        const rgbeLoader = new RGBELoader();
+        rgbeLoader.setDataType(THREE.HalfFloatType);
+
+        rgbeLoader.load('/models/forest.hdr', function (texture) {
+            const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+            model.traverse((child) => {
+                if (child.isMesh) {
+                    child.material.envMap = envMap;
+                    child.material.envMapIntensity = 1;
+                }
+            });
+
+            pmremGenerator.dispose();
+            scene.add(model);
+        });
     }, undefined, function (error) {
         console.log(error);
     });
