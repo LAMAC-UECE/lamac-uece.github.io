@@ -19,7 +19,9 @@ export default function IndexPage() {
     if (getCookie("disableIntro") || sessionStorage.getItem("introPlayed")) {
       setShowIntro(false);
     } else {
-      sessionStorage.setItem("introPlayed", "true");
+      window.setTimeout(() => {
+        sessionStorage.setItem("introPlayed", "true");
+      }, 6000);
     }
 
     setMounted(true);
@@ -28,7 +30,6 @@ export default function IndexPage() {
   if (!mounted) return <LoadingSpinner />;
 
   return (
-    <React.StrictMode>
       <div>
         <div className={styles.HomeContent}>
           {showIntro && <AnimatedLogoIntro />}
@@ -43,6 +44,5 @@ export default function IndexPage() {
           setShow={setConfigsModalVisible}
         />
       </div>
-    </React.StrictMode>
   );
 }
