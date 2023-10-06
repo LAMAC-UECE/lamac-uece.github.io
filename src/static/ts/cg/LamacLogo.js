@@ -3,13 +3,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
 
-
 export function LamacLogoCG(canvas) {
     const scene = new THREE.Scene();
     var model;
 
     const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-    // camera.position.z = 5;
     camera.position.set(0, 0, 2);
     camera.lookAt(0, 0, 0);
 
@@ -47,8 +45,7 @@ export function LamacLogoCG(canvas) {
 
     const loader = new GLTFLoader();
     loader.load('/models/lamac.glb', function (gltf) {
-        model = gltf.scene
-        model.translateY(-0.3)
+        model = gltf.scene;
 
         const pmremGenerator = new THREE.PMREMGenerator(renderer);
         const rgbeLoader = new RGBELoader();
