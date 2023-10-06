@@ -8,7 +8,7 @@ export function LamacLogoCG(canvas) {
     var model;
 
     const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-    camera.position.set(0, 0, 2);
+    camera.position.set(0, 0, 3);
     camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
