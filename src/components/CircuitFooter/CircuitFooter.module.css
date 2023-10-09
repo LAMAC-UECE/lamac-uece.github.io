@@ -7,12 +7,31 @@
   background-image: url('/images/circuits.png');
   background-size: contain;
   background-repeat: repeat;
-  opacity: 0.25;
+  opacity: 0.30;
 }
-
 
 @media screen and (min-width: 991px) {
   .CircuitFooter {
     height: 180px;
+  }
+}
+
+.Delayed {
+  opacity: 1;
+  animation: revealFromBottom 4s ease forwards, adjustOpacity 1s 2.5s forwards;
+}
+
+@keyframes revealFromBottom {
+  0% {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@keyframes adjustOpacity {
+  100% {
+      opacity: 0.3;
   }
 }

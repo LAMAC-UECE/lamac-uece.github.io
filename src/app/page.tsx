@@ -44,7 +44,7 @@ export default function IndexPage() {
           show={isConfigsModalVisible}
           setShow={setConfigsModalVisible}
         />
-        <CircuitFooter />
+        <CircuitFooter delayed={showIntro} />
       </div>
   );
 }
