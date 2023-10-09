@@ -8,12 +8,15 @@
   width: 50px;
   height: 50px;
   margin: 30px;
+  margin-bottom: 50px;
+  z-index: 1000;
   animation: spin 10000ms linear infinite;
 }
 
 @media screen and (min-width: 991px) {
   .ConfigsGear {
     margin: 50px;
+    margin-bottom: 90px;
   }
 }
 
