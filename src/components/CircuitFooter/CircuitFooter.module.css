@@ -1,0 +1,18 @@
+.CircuitFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-image: url('/images/circuits.png');
+  background-size: contain;
+  background-repeat: repeat;
+  opacity: 0.25;
+}
+
+
+@media screen and (min-width: 991px) {
+  .CircuitFooter {
+    height: 180px;
+  }
+}

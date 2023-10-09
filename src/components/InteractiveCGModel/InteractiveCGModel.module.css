@@ -1,5 +1,5 @@
 .HomeGlCanvasContainer {
-    height: calc(100vh - 400px);
+    height: calc(100vh - 300px);
     width: 80%;
     margin-top: 20px;
     margin-left: auto;
@@ -9,11 +9,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
 }
 
 .HomeGlCanvas {
     width: 80%;
-    height: 80%;
+    height: 100%;
     display: block;
 }
 

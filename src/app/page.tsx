@@ -8,6 +8,7 @@ import AnimatedLogoIntro from '../components/AnimatedLogoIntro/AnimatedLogoIntro
 import InteractiveCGModel from '../components/InteractiveCGModel/InteractiveCGModel';
 import ConfigsGear from '../components/ConfigsGear/ConfigsGear';
 import ConfigsModal from '../components/ConfigsModal/ConfigsModal';
+import CircuitFooter from '../components/CircuitFooter/CircuitFooter';
 
 
 export default function IndexPage() {
@@ -43,6 +44,7 @@ export default function IndexPage() {
           show={isConfigsModalVisible}
           setShow={setConfigsModalVisible}
         />
+        <CircuitFooter />
       </div>
   );
 }
