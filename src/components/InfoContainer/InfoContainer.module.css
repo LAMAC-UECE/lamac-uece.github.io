@@ -1,0 +1,19 @@
+.InfoContainer {
+    max-width: 80%;
+    margin: 30px auto;
+}
+
+@media screen and (min-width: 991px) {
+    .InfoContainer {
+        max-width: 80%;
+        margin: 50px auto;
+    }
+}
+
+.InfoContainerTitle {
+    margin-bottom: 15px;
+}
+
+.InfoContainerBody {
+    text-align: justify;
+}
