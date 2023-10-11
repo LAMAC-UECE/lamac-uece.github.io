@@ -1,12 +1,39 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from "react";
+import AboutLamac from "./components/AboutLamac/AboutLamac";
+import styles from "./About.module.css";
+import InfoContainer from "../../components/InfoContainer/InfoContainer";
+import ConfigsModal from "../../components/ConfigsModal/ConfigsModal";
+import ConfigsGear from "../../components/ConfigsGear/ConfigsGear";
 
 function About() {
+  const [isConfigsModalVisible, setConfigsModalVisible] = useState(false);
+
   return (
-    <>
-      <div>About</div>
-    </>
+    <div className={styles.AboutPage}>
+      <InfoContainer>
+        <div className={styles.Warning}>
+          <InfoContainer.Title>Aviso</InfoContainer.Title>
+          <InfoContainer.Body>
+            Este site <b>não</b> é um veículo oficial da UECE, mas sim um
+            projeto com fins puramente didáticos desenvolvido por, e para, a
+            equipe do laboratório.
+          </InfoContainer.Body>
+        </div>
+      </InfoContainer>
+
+      <AboutLamac />
+
+      <ConfigsGear
+        delayed={false}
+        toggleConfigsModalVisibility={setConfigsModalVisible}
+      />
+      <ConfigsModal
+        show={isConfigsModalVisible}
+        setShow={setConfigsModalVisible}
+      />
+    </div>
   );
 }
 
