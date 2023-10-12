@@ -16,18 +16,19 @@ function AboutLamac() {
               <a href="https://www.uece.br/" target="_blank">
                 Universidade Estadual do Ceará (UECE)
               </a>
-              , foi fundado pelo Professor associado{" "}
+              , foi fundado em 2008 pelo Professor associado{" "}
               <a
                 href="https://www.escavador.com/sobre/2736522/thelmo-pontes-de-araujo"
                 target="_blank"
               >
                 Thelmo Pontes de Araújo, PhD
               </a>
-              , do curso de Matemática. O laboratório se
-              concentra em atividades de pesquisa científica e desenvolvimento
-              de software nas áreas de Inteligência Computacional com
-              aprendizado profundo de máquina, Processamento Digital de Imagens
-              e Computação Gráfica.
+              , do curso de Matemática. O laboratório concentra suas principais
+              atividades no desenvolvimento de software e de pesquisas
+              científicas nas áreas de Inteligência Computacional (com
+              aprendizado de máquina profundo) para reconhecimento e
+              classificação de imagens e voz, bem como em Processamento Digital
+              de Imagens e Computação Gráfica aplicadas em imagens médicas.
             </p>
           </div>
 
