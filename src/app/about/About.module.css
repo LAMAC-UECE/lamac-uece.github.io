@@ -1,0 +1,22 @@
+.AboutPage {
+    text-align: center;
+}
+
+.Warning {
+    margin: 0 auto;
+    border: 1px solid #0d779752;
+    border-radius: 12px;
+    padding: 15px 15px;
+}
+
+@media screen and (min-width: 991px) {
+    .Warning {
+        max-width: 70%
+    }
+}
+
+@media screen and (min-width: 1199px) {
+    .Warning {
+        max-width: 50%
+    }
+}

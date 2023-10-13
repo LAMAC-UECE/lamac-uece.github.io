@@ -1,0 +1,40 @@
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.textContent,
+.imageContent {
+  width: 100%;
+}
+
+.imageContent img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+@media (min-width: 991px) {
+  .contentWrapper {
+    flex-direction: row;
+    justify-content: space-between
+  }
+
+  .textContent {
+    width: calc(50% - 5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imageContent {
+    width: calc(50% - 5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imageContent img {
+    max-width: 75%;
+  }
+}
