@@ -14,7 +14,7 @@ function About() {
     <div className={styles.AboutPage}>
       <InfoContainer>
         <div className={styles.Warning}>
-          <InfoContainer.Title>Aviso</InfoContainer.Title>
+          <h2>Aviso</h2>
           <InfoContainer.Body>
             Este site <b>não</b> é um veículo oficial da UECE, mas sim um
             projeto com fins puramente didáticos desenvolvido por, e para, a
