@@ -6,6 +6,7 @@ import styles from "./About.module.css";
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
 import ConfigsModal from "../../components/ConfigsModal/ConfigsModal";
 import ConfigsGear from "../../components/ConfigsGear/ConfigsGear";
+import ComputationalMathematics from "./components/ComputationalMathematics/ComputationalMathematics";
 
 function About() {
   const [isConfigsModalVisible, setConfigsModalVisible] = useState(false);
@@ -23,7 +24,13 @@ function About() {
         </div>
       </InfoContainer>
 
-      <AboutLamac />
+      <div id="lamac">
+        <AboutLamac />
+      </div>
+
+      <div id="computational-math">
+        <ComputationalMathematics />
+      </div>
 
       <ConfigsGear
         delayed={false}
