@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import Image from 'next/image';
-import brand from '../../static/images/lamac-text-transparent.svg';
+import brand from '../../static/images/logo-blue.svg';
 import styles from './LamacNavbar.module.css';
 import { AiOutlineHome } from 'react-icons/ai';
 import { VscBook } from 'react-icons/vsc';
@@ -32,7 +32,8 @@ function LamacNavbar() {
     <Navbar className={styles.Navbar} expand="lg">
       <Container>
         <Navbar.Brand href='/' className={brandDelayed ? styles.DelayedNavBrand : ''}>
-          <Image src={brand} width={250} alt="LaMaC Logo White" priority />
+          <Image src={brand} className='d-lg-none' width={250} alt="LaMaC Logo White" priority />
+          <Image src={brand} className='d-none d-lg-block' width={350} alt="LaMaC Logo White" priority />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" className={brandDelayed ? styles.NavbarToggleDelayed : ''} />
