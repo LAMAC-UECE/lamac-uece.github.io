@@ -23,17 +23,20 @@ function AboutLamac() {
               >
                 Thelmo Pontes de Araújo, PhD
               </a>
-              , do curso de Matemática. O laboratório concentra suas principais
-              atividades no desenvolvimento de software e de pesquisas
-              científicas nas áreas de Inteligência Computacional (com
-              aprendizado de máquina profundo) para reconhecimento e
-              classificação de imagens e voz, bem como em Processamento Digital
-              de Imagens e Computação Gráfica aplicadas em imagens médicas.
+              , do curso de Matemática.<br></br>
+              <br></br> O laboratório concentra suas principais atividades no
+              desenvolvimento de <i>software</i> científico e pesquisas nas
+              áreas de Inteligência Computacional (aprendizado profundo),
+              Processamento de Imagens e Computação Gráfica. Para a condução
+              efetiva das atividades de pesquisa, empregamos diversas
+              disciplinas da matemática e suas implementações computacionais,
+              tais como Álgebra Linear, Cálculo, Métodos Numéricos, Geometria
+              Analítica, Matemática Discreta, entre outras.
             </p>
           </div>
 
           <div className={styles.imageContent}>
-            <img src="/images/lamac-uece.png" alt="LaMaC" />
+            <img src="/images/logo-white-uece.svg" alt="LaMaC" />
           </div>
         </div>
       </InfoContainer.Body>

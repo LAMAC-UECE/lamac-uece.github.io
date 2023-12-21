@@ -53,11 +53,15 @@ function LamacNavbar() {
               onToggle={() => window.location.href = '/about'}
               className='d-none d-lg-block'
             >
+              <NavDropdown.Header>Informações Gerais</NavDropdown.Header>
               <NavDropdown.Item href="/about#lamac">Sobre o LaMaC</NavDropdown.Item>
               <NavDropdown.Item href="/about#computational-math">O que é Matemática Computacional</NavDropdown.Item>
-              <NavDropdown.Item href="/about#infrastructure">Infraestrutura do laboratório</NavDropdown.Item>
-              <NavDropdown.Item href="/about#research-areas">Linhas de pesquisa</NavDropdown.Item>
               <NavDropdown.Item href="/about#team">Nossa equipe</NavDropdown.Item>
+              <NavDropdown.Divider></NavDropdown.Divider>
+              <NavDropdown.Header>Linhas de Pesquisa</NavDropdown.Header>
+              <NavDropdown.Item href="/about#research-areas-ai">Inteligência Artificial</NavDropdown.Item>
+              <NavDropdown.Item href="/about#research-areas-ip">Processamento de Imagens</NavDropdown.Item>
+              <NavDropdown.Item href="/about#research-areas-cg">Computação Gráfica</NavDropdown.Item>
             </NavDropdown>
 
             {/* Tutorials */}
