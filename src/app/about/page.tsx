@@ -7,6 +7,7 @@ import InfoContainer from "../../components/InfoContainer/InfoContainer";
 import ConfigsModal from "../../components/ConfigsModal/ConfigsModal";
 import ConfigsGear from "../../components/ConfigsGear/ConfigsGear";
 import ComputationalMathematics from "./components/ComputationalMathematics/ComputationalMathematics";
+import OurTeam from "./components/OurTeam/OurTeam";
 
 function About() {
   const [isConfigsModalVisible, setConfigsModalVisible] = useState(false);
@@ -30,6 +31,10 @@ function About() {
 
       <div id="computational-math">
         <ComputationalMathematics />
+      </div>
+
+      <div id="team">
+        <OurTeam />
       </div>
 
       <ConfigsGear

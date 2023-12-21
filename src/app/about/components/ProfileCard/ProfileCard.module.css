@@ -1,0 +1,15 @@
+.ProfileCard {
+  width: 300px;
+  margin: 0 auto 50px auto;
+  text-align: center;
+  color: #0d7797;
+  border: 1px solid #0d7797;
+}
+
+.ProfileCardImg {
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 9999px;
+  border: 1px solid #0d7797;
+}
