@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./OurTeam.module.css";
 import InfoContainer from "../../../../components/InfoContainer/InfoContainer";
 import ProfileCard from "../ProfileCard/ProfileCard";
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Row from "react-bootstrap/Row";
 
 function OurTeam() {
   const cardsPerRow = 3;
@@ -69,21 +68,22 @@ function OurTeam() {
 
   const renderProfileCards = () => {
     return teamMembers.map((member, index) => (
-      <Col key={index} md={12 / cardsPerRow}>
-        <ProfileCard
-          name={member.name}
-          description={member.description}
-          links={member.links}
-        />
-      </Col>
+      <ProfileCard
+        key={index}
+        name={member.name}
+        description={member.description}
+        links={member.links}
+      />
     ));
   };
-  
+
   return (
     <InfoContainer>
       <InfoContainer.Title>Nossa Equipe</InfoContainer.Title>
       <InfoContainer.Body>
-        <Row>{renderProfileCards()}</Row>
+        <Row>
+          {renderProfileCards()}
+        </Row>
       </InfoContainer.Body>
     </InfoContainer>
   );

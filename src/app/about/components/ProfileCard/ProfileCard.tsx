@@ -30,7 +30,6 @@ function ProfileCard({
           links.map((link, index) => (
             <div key={index}>
               <Card.Link href={link.url} target="_blank">{link.name}</Card.Link>
-              <br />
             </div>
           ))}
       </Card.Body>
