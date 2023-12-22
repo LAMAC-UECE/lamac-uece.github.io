@@ -9,6 +9,7 @@ function OurTeam() {
   const teamMembers = [
     {
       name: "Thelmo Pontes de Araujo",
+      imgSrc: "/images/profiles/thelmo.jpg",
       description: "Professor Associado. Doutor.",
       links: [
         {
@@ -22,7 +23,8 @@ function OurTeam() {
       ],
     },
     {
-      name: "Gabriel Furtado Lins Melo",
+      name: "Gabriel Lins",
+      imgSrc: "/images/profiles/gabriel.jpg",
       description: "Discente de Mestrado. Bacharel.",
       links: [
         {
@@ -40,27 +42,43 @@ function OurTeam() {
       ],
     },
     {
-      name: "Domingos Bruno Sousa Santos",
+      name: "Domingos Bruno",
+      imgSrc: undefined,
       description: "Discente de Doutorado. Mestre.",
       links: [],
     },
     {
-      name: "Alberto Luian",
-      description: "Discente de Graduação.",
-      links: [],
-    },
-    {
-      name: "Diogo",
-      description: "Discente de Graduação.",
-      links: [],
-    },
-    {
       name: "Victor Wilker",
+      imgSrc: undefined,
+      description: "Discente de Graduação.",
+      links: [],
+    },
+    {
+      name: "Alberto Luian",
+      imgSrc: "/images/profiles/alberto.jpg",
+      description: "Discente de Graduação.",
+      links: [
+        {
+          name: "Lattes",
+          url: "http://lattes.cnpq.br/9709130130037571"
+        }
+      ],
+    },
+    {
+      name: "Diogo Nascimento",
+      imgSrc: undefined,
       description: "Discente de Graduação.",
       links: [],
     },
     {
       name: "Carlos Estelita",
+      imgSrc: undefined,
+      description: "Discente de Graduação.",
+      links: [],
+    },
+    {
+      name: "Guilherme Artur",
+      imgSrc: undefined,
       description: "Discente de Graduação.",
       links: [],
     },
@@ -71,6 +89,7 @@ function OurTeam() {
       <ProfileCard
         key={index}
         name={member.name}
+        imgSrc={member.imgSrc}
         description={member.description}
         links={member.links}
       />
