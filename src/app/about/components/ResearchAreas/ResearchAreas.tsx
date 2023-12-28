@@ -47,7 +47,7 @@ function ResearchAreas() {
           <div className={`${style.ImageContent} d-none d-lg-flex`}>
             <img
               src="/gifs/tc-ip.gif"
-              alt="Image Processing Example"
+              alt="Img Processing Example"
               style={{borderRadius: 9999, maxWidth: "85%"}}
             />
           </div>
@@ -81,7 +81,7 @@ function ResearchAreas() {
           </div>
 
           <div className={`${style.ImageContent} d-flex d-lg-none`}>
-            <img src="/gifs/tc-ip.gif" alt="Image Processing Example" />
+            <img src="/gifs/tc-ip.gif" alt="Img Processing Example" />
           </div>
         </div>
 

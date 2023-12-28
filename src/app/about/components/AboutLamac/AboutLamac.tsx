@@ -13,13 +13,14 @@ function AboutLamac() {
               O Laboratório de Matemática Computacional (LaMaC), vinculado ao
               curso de Ciência da Computação do Centro de Ciências e Tecnologia
               (CCT) da{" "}
-              <a href="https://www.uece.br/" target="_blank">
+              <a href="https://www.uece.br/" target="_blank" rel="noreferrer">
                 Universidade Estadual do Ceará (UECE)
               </a>
               , foi fundado em 2008 pelo Professor associado{" "}
               <a
                 href="https://www.escavador.com/sobre/2736522/thelmo-pontes-de-araujo"
                 target="_blank"
+                rel="noreferrer"
               >
                 Thelmo Pontes de Araújo, PhD
               </a>

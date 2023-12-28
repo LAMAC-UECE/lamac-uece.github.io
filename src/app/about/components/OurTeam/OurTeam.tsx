@@ -1,11 +1,9 @@
 import React from "react";
-import styles from "./OurTeam.module.css";
 import InfoContainer from "../../../../components/InfoContainer/InfoContainer";
 import ProfileCard from "../ProfileCard/ProfileCard";
 import Row from "react-bootstrap/Row";
 
 function OurTeam() {
-  const cardsPerRow = 3;
   const teamMembers = [
     {
       name: "Thelmo Pontes de Araujo",
