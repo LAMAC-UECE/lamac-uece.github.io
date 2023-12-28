@@ -5,8 +5,8 @@ import { deleteCookie, getCookie, setCookie } from "../../static/ts/cookiesAPI";
 
 const applyDarkTheme = () => {
   document.querySelector(".navbar")?.classList.add("dark");
-  document.querySelector(".modal-content")?.classList.add("dark");
   document.querySelector(".navbar-nav")?.classList.add("dark");
+  document.querySelector(".modal-content")?.classList.add("dark");
   document.querySelector("body")?.classList.add("dark");
   const imgElements = document
     .querySelector(".navbar-brand")
@@ -16,6 +16,9 @@ const applyDarkTheme = () => {
       element.src = "/images/logo-blue-dark.svg";
     });
   }
+  document.querySelectorAll(".card")?.forEach(cardElement => {
+    cardElement.classList.add("dark");
+  })
 };
 
 const removeDarkTheme = () => {
@@ -31,6 +34,9 @@ const removeDarkTheme = () => {
       element.src = "/images/logo-blue.svg";
     });
   }
+  document.querySelectorAll(".card")?.forEach(cardElement => {
+    cardElement.classList.remove("dark");
+  })
 };
 
 function ConfigsModal(props: {

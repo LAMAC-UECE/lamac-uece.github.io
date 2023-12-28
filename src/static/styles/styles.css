@@ -50,6 +50,10 @@ body.dark {
   border-top: 1px solid gray;
 }
 
+.card.dark {
+  color: #21b0dbde;
+}
+
 /* ================================================== */
 /* Override Bootstrap */
 
