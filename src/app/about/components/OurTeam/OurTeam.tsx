@@ -41,18 +41,18 @@ function OurTeam() {
         },
       ],
     },
-    {
-      name: "Domingos Bruno",
-      imgSrc: undefined,
-      description: "Discente de Doutorado. Mestre.",
-      links: [],
-    },
-    {
-      name: "Victor Wilker",
-      imgSrc: undefined,
-      description: "Discente de Graduação.",
-      links: [],
-    },
+    // {
+    //   name: "Domingos Bruno",
+    //   imgSrc: undefined,
+    //   description: "Discente de Doutorado. Mestre.",
+    //   links: [],
+    // },
+    // {
+    //   name: "Victor Wilker",
+    //   imgSrc: undefined,
+    //   description: "Discente de Graduação.",
+    //   links: [],
+    // },
     {
       name: "Alberto Luian",
       imgSrc: "/images/profiles/alberto.jpg",
@@ -64,24 +64,24 @@ function OurTeam() {
         }
       ],
     },
-    {
-      name: "Diogo Nascimento",
-      imgSrc: undefined,
-      description: "Discente de Graduação.",
-      links: [],
-    },
-    {
-      name: "Carlos Estelita",
-      imgSrc: undefined,
-      description: "Discente de Graduação.",
-      links: [],
-    },
-    {
-      name: "Guilherme Artur",
-      imgSrc: undefined,
-      description: "Discente de Graduação.",
-      links: [],
-    },
+    // {
+    //   name: "Diogo Nascimento",
+    //   imgSrc: undefined,
+    //   description: "Discente de Graduação.",
+    //   links: [],
+    // },
+    // {
+    //   name: "Carlos Estelita",
+    //   imgSrc: undefined,
+    //   description: "Discente de Graduação.",
+    //   links: [],
+    // },
+    // {
+    //   name: "Guilherme Artur",
+    //   imgSrc: undefined,
+    //   description: "Discente de Graduação.",
+    //   links: [],
+    // },
   ];
 
   const renderProfileCards = () => {
