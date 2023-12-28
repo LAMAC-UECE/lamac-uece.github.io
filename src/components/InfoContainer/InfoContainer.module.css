@@ -1,6 +1,6 @@
 .InfoContainer {
     max-width: 85%;
-    margin: 30px auto;
+    margin: 30px auto 0 auto;
 }
 
 .InfoContainerTitle {
@@ -10,7 +10,7 @@
 @media screen and (min-width: 991px) {
     .InfoContainer {
         max-width: 70%;
-        margin: 50px auto;
+        margin: 50px auto 0 auto;
     }
 
     .InfoContainerTitle {

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import styles from "./cookies.module.css";
 import ConfigsModal from "../../components/ConfigsModal/ConfigsModal";
 import ConfigsGear from "../../components/ConfigsGear/ConfigsGear";
+import CircuitFooter from "../../components/CircuitFooter/CircuitFooter";
 
 function CookiesPolicy() {
   const [isConfigsModalVisible, setConfigsModalVisible] = useState(false);
@@ -89,6 +90,8 @@ function CookiesPolicy() {
         show={isConfigsModalVisible}
         setShow={setConfigsModalVisible}
       />
+
+      <CircuitFooter delayed={false} relative={true} />
     </div>
   );
 }

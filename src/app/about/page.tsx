@@ -9,6 +9,7 @@ import ConfigsGear from "../../components/ConfigsGear/ConfigsGear";
 import ComputationalMathematics from "./components/ComputationalMathematics/ComputationalMathematics";
 import OurTeam from "./components/OurTeam/OurTeam";
 import ResearchAreas from "./components/ResearchAreas/ResearchAreas";
+import CircuitFooter from "../../components/CircuitFooter/CircuitFooter";
 
 function About() {
   const [isConfigsModalVisible, setConfigsModalVisible] = useState(false);
@@ -50,6 +51,7 @@ function About() {
         show={isConfigsModalVisible}
         setShow={setConfigsModalVisible}
       />
+      <CircuitFooter delayed={false} relative={true} />
     </div>
   );
 }

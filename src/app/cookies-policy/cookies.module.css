@@ -1,7 +1,4 @@
 .CookiesPageContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   min-height: calc(100vh - 280px);
 }
@@ -9,7 +6,7 @@
 .CookiesPageText {
   text-align: justify;
   max-width: 90%;
-  margin-bottom: 50px;
+  margin: 0 auto;
 }
 
 .CookiesPageText > div {

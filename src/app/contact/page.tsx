@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import styles from "./contact.module.css";
 import ConfigsGear from "../../components/ConfigsGear/ConfigsGear";
 import ConfigsModal from "../../components/ConfigsModal/ConfigsModal";
+import CircuitFooter from "../../components/CircuitFooter/CircuitFooter";
 
 function Contact() {
   const [isConfigsModalVisible, setConfigsModalVisible] = useState(false);
@@ -33,6 +34,7 @@ function Contact() {
         show={isConfigsModalVisible}
         setShow={setConfigsModalVisible}
       />
+      <CircuitFooter delayed={false} relative={false} />
     </div>
   );
 }

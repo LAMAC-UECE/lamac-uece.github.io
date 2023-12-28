@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import styles from './CircuitFooter.module.css';
+import React, { useEffect, useState } from "react";
+import styles from "./CircuitFooter.module.css";
 
-function CircuitFooter(props: {delayed: boolean}) {
+function CircuitFooter(props: { delayed: boolean; relative: boolean }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -13,19 +13,21 @@ function CircuitFooter(props: {delayed: boolean}) {
       return () => {
         clearTimeout(timer);
       };
-    }
-    else {
+    } else {
       setIsVisible(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return (
-    isVisible ? 
+  return isVisible ? (
     <>
       <div
-        className={`${styles.CircuitFooter} ${props.delayed ? styles.Delayed : ''}`}
+        className={`${styles.CircuitFooter} ${
+          props.relative ? "position-relative" : ""
+        } ${props.delayed ? styles.Delayed : ""}`}
       ></div>
-    </> : <></>
+    </>
+  ) : (
+    <></>
   );
 }
 
