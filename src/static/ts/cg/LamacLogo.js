@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
 
-export function LamacLogoCG(canvas) {
+export function LamacLogoCG(canvas, onModelLoad) {
     const scene = new THREE.Scene();
     var model;
 
@@ -63,6 +63,10 @@ export function LamacLogoCG(canvas) {
             pmremGenerator.dispose();
             scene.add(model);
         });
+
+        if (onModelLoad) {
+            onModelLoad();
+        }
     }, undefined, function (error) {
         console.log(error);
     });
