@@ -55,12 +55,11 @@ function LamacNavbar() {
       <Container>
         <Navbar.Brand
           href="/"
-          className={brandDelayed ? styles.DelayedNavBrand : ""}
+          className={`${styles.SmallNavBrand} ${brandDelayed ? styles.DelayedNavBrand : ""}`}
         >
           <Image
             src={brand}
-            className="d-lg-none"
-            width={250}
+            className={`d-lg-none ${styles.SmallNavBrandImg}`}
             alt="LaMaC Logo White"
             priority
           />

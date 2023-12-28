@@ -47,6 +47,10 @@ code {
   color: #1c96bb !important;
 }
 
+.navbar-brand {
+  margin-right: 0;
+}
+
 @media screen and (min-width: 992px) {
   .dropdown .dropdown-menu {
     -webkit-transition: all 0.9s ease-in-out;
@@ -72,8 +76,25 @@ code {
   }
 }
 
+.navbar-collapse {
+  border-bottom: 1px solid #0d77977a;
+  border-radius: 16px;
+}
+
+.collapse:not(.show) {
+  border: none;
+}
+
 .navbar-toggler:focus {
-  box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) #0d7797 !important;
+  box-shadow: 0 0 0 1px #0d7797 !important;
+}
+
+.navbar-toggler {
+  box-shadow: 0 0 0 1px #0d77977a !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("/images/hamburguer.svg");
 }
 
 span {
