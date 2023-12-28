@@ -48,7 +48,7 @@ function ResearchAreas() {
             <img
               src="/gifs/tc-ip.gif"
               alt="Img Processing Example"
-              style={{borderRadius: 9999, maxWidth: "85%"}}
+              style={{ borderRadius: 9999, maxWidth: "85%" }}
             />
           </div>
           <div className={`${style.TextWrapper} text-center text-lg-end`}>
@@ -100,12 +100,14 @@ function ResearchAreas() {
               </p>
               <p>
                 O Laboratório de Matemática Computacional (LaMaC) aplica a
-                Computação Gráfica em diversas pesquisas, especialmente na área
-                da saúde. Concentra-se na criação e manipulação de modelos
+                Computação Gráfica em pesquisas na área da saúde,
+                especificamente na criação e manipulação de modelos
                 tridimensionais, utilizando técnicas avançadas para gerar e
                 aprimorar elementos visuais em imagens médicas. Essas aplicações
-                contribuem para a análise detalhada de estruturas anatômicas,
-                auxiliando em diagnósticos.
+                contribuem para a análise detalhada de estruturas anatômicas, o
+                que permite, no âmbito clínico, assistência diagnóstica e, no
+                educacional, proporcionam uma experiência mais rica, através da
+                interação com modelos realistas.
               </p>
             </div>
           </div>

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import AboutLamac from "./components/AboutLamac/AboutLamac";
-import styles from "./About.module.css";
+import styles from "./about.module.css";
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
 import ConfigsModal from "../../components/ConfigsModal/ConfigsModal";
 import ConfigsGear from "../../components/ConfigsGear/ConfigsGear";
