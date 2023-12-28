@@ -8,7 +8,7 @@ function CircuitFooter(props: {delayed: boolean}) {
     if (props.delayed) {
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 4500);
+      }, 0);
 
       return () => {
         clearTimeout(timer);

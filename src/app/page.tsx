@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 import { getCookie } from '../static/ts/cookiesAPI';
 import styles from './home.module.css';
-import AnimatedLogoIntro from '../components/AnimatedLogoIntro/AnimatedLogoIntro';
 import InteractiveCGModel from '../components/InteractiveCGModel/InteractiveCGModel';
 import ConfigsGear from '../components/ConfigsGear/ConfigsGear';
 import ConfigsModal from '../components/ConfigsModal/ConfigsModal';
@@ -22,7 +21,7 @@ export default function IndexPage() {
     } else {
       window.setTimeout(() => {
         sessionStorage.setItem("introPlayed", "true");
-      }, 6000);
+      }, 0);
     }
 
     setMounted(true);
@@ -33,7 +32,6 @@ export default function IndexPage() {
   return (
       <div>
         <div className={styles.HomeContent}>
-          {showIntro && <AnimatedLogoIntro />}
           <InteractiveCGModel delayed={showIntro} />
         </div>
         <ConfigsGear
