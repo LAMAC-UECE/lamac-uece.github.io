@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import Image from 'next/image';
-import brand from '../../static/images/lamac-text-transparent.svg';
+import brand from '../../static/images/logo-blue.svg';
 import styles from './LamacNavbar.module.css';
 import { AiOutlineHome } from 'react-icons/ai';
 import { VscBook } from 'react-icons/vsc';
@@ -32,7 +32,8 @@ function LamacNavbar() {
     <Navbar className={styles.Navbar} expand="lg">
       <Container>
         <Navbar.Brand href='/' className={brandDelayed ? styles.DelayedNavBrand : ''}>
-          <Image src={brand} width={250} alt="LaMaC Logo White" priority />
+          <Image src={brand} className='d-lg-none' width={250} alt="LaMaC Logo White" priority />
+          <Image src={brand} className='d-none d-lg-block' width={350} alt="LaMaC Logo White" priority />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" className={brandDelayed ? styles.NavbarToggleDelayed : ''} />
@@ -55,8 +56,7 @@ function LamacNavbar() {
             >
               <NavDropdown.Item href="/about#lamac">Sobre o LaMaC</NavDropdown.Item>
               <NavDropdown.Item href="/about#computational-math">O que é Matemática Computacional</NavDropdown.Item>
-              <NavDropdown.Item href="/about#infrastructure">Infraestrutura do laboratório</NavDropdown.Item>
-              <NavDropdown.Item href="/about#research-areas">Linhas de pesquisa</NavDropdown.Item>
+              <NavDropdown.Item href="/about#research-areas">Linhas de Pesquisa</NavDropdown.Item>
               <NavDropdown.Item href="/about#team">Nossa equipe</NavDropdown.Item>
             </NavDropdown>
 
@@ -73,11 +73,11 @@ function LamacNavbar() {
               <NavDropdown.Item href="/tutorials/linear-algebra">Álgebra Linear</NavDropdown.Item>
               <NavDropdown.Item href="/tutorials/numerical-calculus">Cálculo Numérico</NavDropdown.Item>
               <NavDropdown.Divider></NavDropdown.Divider>
-              <NavDropdown.Header>Programação</NavDropdown.Header>
-              <NavDropdown.Item href="/tutorials/data-visualization">Visualização de Dados (Matplotlib)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/image-processing">Processamento de Imagens (OpenCV)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/computer-graphics">Computação Gráfica (WebGL)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/machine-learning">Machine Learning (PyTorch)</NavDropdown.Item>
+              <NavDropdown.Header>Computação</NavDropdown.Header>
+              <NavDropdown.Item href="/tutorials/python-programming">Programação em Python</NavDropdown.Item>
+              <NavDropdown.Item href="/tutorials/image-processing">Processamento de Imagens</NavDropdown.Item>
+              <NavDropdown.Item href="/tutorials/neural-networks">Redes Neurais Artificiais</NavDropdown.Item>
+              <NavDropdown.Item href="/tutorials/computer-graphics">Computação Gráfica</NavDropdown.Item>
             </NavDropdown>
 
             {/* Productions */}
