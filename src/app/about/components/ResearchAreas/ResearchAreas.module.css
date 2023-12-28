@@ -1,0 +1,38 @@
+.ContentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 50px 0;
+}
+
+.TextContent,
+.ImageContent {
+  width: 100%;
+}
+
+.ImageContent img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+@media (min-width: 991px) {
+  .ContentWrapper {
+    flex-direction: row;
+    justify-content: space-between
+  }
+
+  .TextWrapper {
+    width: calc(60% - 5px);
+  }
+
+  .ImageContent {
+    width: calc(40% - 5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ImageContent img {
+    max-width: 95%;
+  }
+}

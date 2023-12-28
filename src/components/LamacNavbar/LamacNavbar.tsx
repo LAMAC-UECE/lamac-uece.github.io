@@ -54,15 +54,10 @@ function LamacNavbar() {
               onToggle={() => window.location.href = '/about'}
               className='d-none d-lg-block'
             >
-              <NavDropdown.Header>Informações Gerais</NavDropdown.Header>
               <NavDropdown.Item href="/about#lamac">Sobre o LaMaC</NavDropdown.Item>
               <NavDropdown.Item href="/about#computational-math">O que é Matemática Computacional</NavDropdown.Item>
+              <NavDropdown.Item href="/about#research-areas">Linhas de Pesquisa</NavDropdown.Item>
               <NavDropdown.Item href="/about#team">Nossa equipe</NavDropdown.Item>
-              <NavDropdown.Divider></NavDropdown.Divider>
-              <NavDropdown.Header>Linhas de Pesquisa</NavDropdown.Header>
-              <NavDropdown.Item href="/about#research-areas-ai">Inteligência Artificial</NavDropdown.Item>
-              <NavDropdown.Item href="/about#research-areas-ip">Processamento de Imagens</NavDropdown.Item>
-              <NavDropdown.Item href="/about#research-areas-cg">Computação Gráfica</NavDropdown.Item>
             </NavDropdown>
 
             {/* Tutorials */}
@@ -78,11 +73,11 @@ function LamacNavbar() {
               <NavDropdown.Item href="/tutorials/linear-algebra">Álgebra Linear</NavDropdown.Item>
               <NavDropdown.Item href="/tutorials/numerical-calculus">Cálculo Numérico</NavDropdown.Item>
               <NavDropdown.Divider></NavDropdown.Divider>
-              <NavDropdown.Header>Programação</NavDropdown.Header>
-              <NavDropdown.Item href="/tutorials/data-visualization">Visualização de Dados (Matplotlib)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/image-processing">Processamento de Imagens (OpenCV)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/computer-graphics">Computação Gráfica (WebGL)</NavDropdown.Item>
-              <NavDropdown.Item href="/tutorials/machine-learning">Machine Learning (PyTorch)</NavDropdown.Item>
+              <NavDropdown.Header>Computação</NavDropdown.Header>
+              <NavDropdown.Item href="/tutorials/python-programming">Programação em Python</NavDropdown.Item>
+              <NavDropdown.Item href="/tutorials/image-processing">Processamento de Imagens</NavDropdown.Item>
+              <NavDropdown.Item href="/tutorials/neural-networks">Redes Neurais Artificiais</NavDropdown.Item>
+              <NavDropdown.Item href="/tutorials/computer-graphics">Computação Gráfica</NavDropdown.Item>
             </NavDropdown>
 
             {/* Productions */}
