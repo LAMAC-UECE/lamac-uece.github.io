@@ -1,11 +1,11 @@
 1:HL["/_next/static/css/b099de04fc97fcb1.css","style",{"crossOrigin":""}]
-2:HL["/_next/static/css/3923f30e8db45cd1.css","style",{"crossOrigin":""}]
-0:["w2gkoLxa2Hko8cpSwtTJX",[[["",{"children":["contact",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b099de04fc97fcb1.css","precedence":"next","crossOrigin":""}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/3923f30e8db45cd1.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
+2:HL["/_next/static/css/3f4c1e664970ed79.css","style",{"crossOrigin":""}]
+0:["XQuI5_qg4_LY8HyIPg9rO",[[["",{"children":["contact",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b099de04fc97fcb1.css","precedence":"next","crossOrigin":""}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/3f4c1e664970ed79.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
 5:HL["/_next/static/css/39465399dbc8511d.css","style",{"crossOrigin":""}]
-6:I{"id":6416,"chunks":["520:static/chunks/5349c568-82f19d35e7124305.js","929:static/chunks/4f9d9cd8-771b5707b73ba885.js","447:static/chunks/00cbbcb7-0768135426e4b318.js","712:static/chunks/3627521c-b0c98263b6682a91.js","884:static/chunks/884-5d1311df34346311.js","434:static/chunks/434-495e2951ffbdf76b.js","185:static/chunks/app/layout-2a410dcda4571c0b.js"],"name":"","async":false}
-7:I{"id":1443,"chunks":["272:static/chunks/webpack-5952dfcb0b1f3a97.js","971:static/chunks/fd9d1056-f2c30959fdcaacc1.js","864:static/chunks/864-b18952b9fe4124ca.js"],"name":"","async":false}
+6:I{"id":8345,"chunks":["520:static/chunks/5349c568-82f19d35e7124305.js","929:static/chunks/4f9d9cd8-771b5707b73ba885.js","447:static/chunks/00cbbcb7-0768135426e4b318.js","712:static/chunks/3627521c-b0c98263b6682a91.js","884:static/chunks/884-5d1311df34346311.js","246:static/chunks/246-a09a4bfdda92703d.js","185:static/chunks/app/layout-2809b91ea2bb9eb3.js"],"name":"","async":false}
+7:I{"id":1443,"chunks":["272:static/chunks/webpack-41c6c5e9eaef6bce.js","971:static/chunks/fd9d1056-f2c30959fdcaacc1.js","864:static/chunks/864-b18952b9fe4124ca.js"],"name":"","async":false}
 8:I{"id":7165,"chunks":["555:static/chunks/app/loading-ca0ee76b463a274f.js"],"name":"","async":false}
-9:I{"id":8639,"chunks":["272:static/chunks/webpack-5952dfcb0b1f3a97.js","971:static/chunks/fd9d1056-f2c30959fdcaacc1.js","864:static/chunks/864-b18952b9fe4124ca.js"],"name":"","async":false}
+9:I{"id":8639,"chunks":["272:static/chunks/webpack-41c6c5e9eaef6bce.js","971:static/chunks/fd9d1056-f2c30959fdcaacc1.js","864:static/chunks/864-b18952b9fe4124ca.js"],"name":"","async":false}
 a:I{"id":6600,"chunks":["160:static/chunks/app/not-found-48d09b0099d7edd8.js"],"name":"","async":false}
 b:I{"id":7545,"chunks":["462:static/chunks/app/contact/loading-2c260c96e9d85635.js"],"name":"","async":false}
 4:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"LaMaC"}],["$","meta","2",{"name":"description","content":"Laboratório de Matemática Computacional"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
