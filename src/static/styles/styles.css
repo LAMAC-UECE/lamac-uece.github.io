@@ -13,6 +13,32 @@ code {
     monospace;
 }
 
+html::-webkit-scrollbar {
+  width: 12px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent; /* torna a track transparente */
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #0d7797; /* define a cor da thumb */
+  border-radius: 10px; /* arredonda as bordas da thumb */
+}
+
+/* Estilos para Firefox */
+html {
+  scrollbar-color: #0d7797 transparent;
+}
+
+/* Estilos para Edge e IE */
+@supports (-ms-ime-align:auto) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #0d7797 transparent;
+  }
+}
+
 /* ================================================== */
 /* Dark Theme */
 body.dark {
