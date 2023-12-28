@@ -3,18 +3,21 @@
 import React, { useEffect, useState } from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import Image from "next/image";
-import brand from "../../static/images/logo-blue.svg";
+import brand from "/public/images/logo-blue.svg";
 import styles from "./LamacNavbar.module.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { VscBook } from "react-icons/vsc";
 import { RiArticleLine } from "react-icons/ri";
 import { BsChatDots, BsInfoCircle } from "react-icons/bs";
 import { getCookie } from "../../static/ts/cookiesAPI";
+import { applyDarkTheme } from "../ConfigsModal/ConfigsModal";
 
 function LamacNavbar() {
   const [brandDelayed, setBrandDelayed] = useState(false);
 
   useEffect(() => {
+    if (getCookie("darkTheme")) applyDarkTheme();
+
     if (window.location.pathname === "/") {
       if (
         !(getCookie("disableIntro") || sessionStorage.getItem("introPlayed"))
@@ -55,15 +58,19 @@ function LamacNavbar() {
       <Container>
         <Navbar.Brand
           href="/"
-          className={`${styles.SmallNavBrand} ${brandDelayed ? styles.DelayedNavBrand : ""}`}
+          className={`${styles.SmallNavBrand} ${
+            brandDelayed ? styles.DelayedNavBrand : ""
+          }`}
         >
           <Image
+            id="lamac-navbrand"
             src={brand}
             className={`d-lg-none ${styles.SmallNavBrandImg}`}
             alt="LaMaC Logo White"
             priority
           />
           <Image
+            id="lamac-navbrand-sm"
             src={brand}
             className="d-none d-lg-block"
             width={350}
@@ -123,7 +130,10 @@ function LamacNavbar() {
               id="tutorials-nav-dropdown"
               title={TutorialsTitle}
               renderMenuOnMount={true}
-              onToggle={() => window.location.href = "https://github.com/lamac-uece/tutoriais-lamac"}
+              onToggle={() =>
+                (window.location.href =
+                  "https://github.com/lamac-uece/tutoriais-lamac")
+              }
               className="d-none d-lg-block"
             >
               <NavDropdown.Header>Matemática</NavDropdown.Header>

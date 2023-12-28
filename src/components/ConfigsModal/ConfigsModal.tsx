@@ -1,18 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import styles from './ConfigsModal.module.css';
-import { Modal, Button, Form } from 'react-bootstrap';
-import { deleteCookie, getCookie, setCookie } from '../../static/ts/cookiesAPI';
+import React, { useEffect, useState } from "react";
+import styles from "./ConfigsModal.module.css";
+import { Modal, Button, Form } from "react-bootstrap";
+import { deleteCookie, getCookie, setCookie } from "../../static/ts/cookiesAPI";
 
-function ConfigsModal(props: { show: boolean, setShow: React.Dispatch<React.SetStateAction<boolean>>; }) {
+const applyDarkTheme = () => {
+  document.querySelector(".navbar")?.classList.add("dark");
+  document.querySelector(".modal-content")?.classList.add("dark");
+  document.querySelector(".navbar-nav")?.classList.add("dark");
+  document.querySelector("body")?.classList.add("dark");
+  const imgElements = document
+    .querySelector(".navbar-brand")
+    ?.querySelectorAll("img");
+  if (imgElements) {
+    imgElements.forEach((element) => {
+      element.src = "/images/logo-blue-dark.svg";
+    });
+  }
+};
+
+const removeDarkTheme = () => {
+  document.querySelector(".navbar")?.classList.remove("dark");
+  document.querySelector(".modal-content")?.classList.remove("dark");
+  document.querySelector(".navbar-nav")?.classList.remove("dark");
+  document.querySelector("body")?.classList.remove("dark");
+  const imgElements = document
+    .querySelector(".navbar-brand")
+    ?.querySelectorAll("img");
+  if (imgElements) {
+    imgElements.forEach((element) => {
+      element.src = "/images/logo-blue.svg";
+    });
+  }
+};
+
+function ConfigsModal(props: {
+  show: boolean;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const [allowCookies, setAllowCookies] = useState(false);
   const [disableIntro, setDisableIntro] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(() => {
     if (getCookie("allowCookies")) {
       setAllowCookies(true);
-
-      if (getCookie("disableIntro"))
-        setDisableIntro(true);
+      if (getCookie("disableIntro")) setDisableIntro(true);
+      if (getCookie("darkTheme")) setDarkTheme(true);
     }
   }, []);
 
@@ -26,6 +59,7 @@ function ConfigsModal(props: { show: boolean, setShow: React.Dispatch<React.SetS
       setDisableIntro(false);
       deleteCookie("allowCookies");
       deleteCookie("disableIntro");
+      deleteCookie("darkTheme");
     }
   };
 
@@ -40,9 +74,22 @@ function ConfigsModal(props: { show: boolean, setShow: React.Dispatch<React.SetS
     }
   };
 
+  const toggleDarkTheme = () => {
+    let newDarkThemeState = !darkTheme;
+    setDarkTheme(newDarkThemeState);
+
+    if (newDarkThemeState === true) {
+      setCookie("darkTheme", "true", 365);
+      applyDarkTheme();
+    } else {
+      deleteCookie("darkTheme");
+      removeDarkTheme();
+    }
+  };
+
   const CookiesSwitchLabel = (
     <span>
-      Aceitar Cookies (<a href='/cookies-policy'>Política de Cookies</a>)
+      Aceitar Cookies (<a href="/cookies-policy">Política de Cookies</a>)
     </span>
   );
 
@@ -71,7 +118,15 @@ function ConfigsModal(props: { show: boolean, setShow: React.Dispatch<React.SetS
           <Form.Check // prettier-ignore
             disabled={allowCookies ? false : true}
             type="switch"
-            label="Desabilitar animação de introdução da página inicial (precisa dos cookies)"
+            label="Modo Escuro"
+            id="dark-theme-switch"
+            checked={darkTheme}
+            onChange={toggleDarkTheme}
+          />
+          <Form.Check // prettier-ignore
+            disabled={allowCookies ? false : true}
+            type="switch"
+            label="Desabilitar animação de introdução da página inicial"
             id="disable-intro-switch"
             checked={disableIntro}
             onChange={toggleDisableIntro}
@@ -80,10 +135,7 @@ function ConfigsModal(props: { show: boolean, setShow: React.Dispatch<React.SetS
       </Modal.Body>
 
       <Modal.Footer>
-        <Button
-          onClick={() => props.setShow(false)}
-          variant="primary"
-        >
+        <Button onClick={() => props.setShow(false)} variant="primary">
           Fechar
         </Button>
       </Modal.Footer>
@@ -92,3 +144,4 @@ function ConfigsModal(props: { show: boolean, setShow: React.Dispatch<React.SetS
 }
 
 export default ConfigsModal;
+export { applyDarkTheme, removeDarkTheme };
