@@ -42,7 +42,7 @@ function ConfigsModal(props: { show: boolean, setShow: React.Dispatch<React.SetS
 
   const CookiesSwitchLabel = (
     <span>
-      Aceitar Cookies (<a href='/cookies-policy' target='_blank'>Política de Cookies</a>)
+      Aceitar Cookies (<a href='/cookies-policy'>Política de Cookies</a>)
     </span>
   );
 
