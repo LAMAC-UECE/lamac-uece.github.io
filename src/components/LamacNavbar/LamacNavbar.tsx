@@ -7,7 +7,7 @@ import brand from "/public/images/logo-blue.svg";
 import styles from "./LamacNavbar.module.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { VscBook } from "react-icons/vsc";
-import { RiArticleLine } from "react-icons/ri";
+// import { RiArticleLine } from "react-icons/ri";
 import { BsChatDots, BsInfoCircle } from "react-icons/bs";
 import { getCookie } from "../../static/ts/cookiesAPI";
 import { applyDarkTheme } from "../ConfigsModal/ConfigsModal";
@@ -42,11 +42,11 @@ function LamacNavbar() {
       <VscBook /> Tutoriais
     </span>
   );
-  const ProductionsTitle = (
-    <span>
-      <RiArticleLine /> Produções
-    </span>
-  );
+  // const ProductionsTitle = (
+  //   <span>
+  //     <RiArticleLine /> Produções
+  //   </span>
+  // );
   const ContactTitle = (
     <span>
       <BsChatDots /> Contato
