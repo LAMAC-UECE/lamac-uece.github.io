@@ -1,8 +1,8 @@
 1:HL["/_next/static/css/b099de04fc97fcb1.css","style",{"crossOrigin":""}]
 2:HL["/_next/static/css/d12ecb945abd51f1.css","style",{"crossOrigin":""}]
-0:["JGMG5xPP4iJErSvuIhi0E",[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b099de04fc97fcb1.css","precedence":"next","crossOrigin":""}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/d12ecb945abd51f1.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
+0:["c0wGyQRStaP_K2jMKNrxw",[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],"$L3",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b099de04fc97fcb1.css","precedence":"next","crossOrigin":""}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/d12ecb945abd51f1.css","precedence":"next","crossOrigin":""}]],"$L4"]]]]
 5:HL["/_next/static/css/9bd7a7ce4fbe0ec5.css","style",{"crossOrigin":""}]
-6:I{"id":2071,"chunks":["520:static/chunks/5349c568-82f19d35e7124305.js","447:static/chunks/00cbbcb7-0768135426e4b318.js","712:static/chunks/3627521c-b0c98263b6682a91.js","190:static/chunks/190-6673a2863a9ff30b.js","246:static/chunks/246-a09a4bfdda92703d.js","185:static/chunks/app/layout-562f83cb6a17d8d9.js"],"name":"","async":false}
+6:I{"id":2071,"chunks":["520:static/chunks/5349c568-82f19d35e7124305.js","447:static/chunks/00cbbcb7-0768135426e4b318.js","712:static/chunks/3627521c-b0c98263b6682a91.js","190:static/chunks/190-6673a2863a9ff30b.js","246:static/chunks/246-a09a4bfdda92703d.js","185:static/chunks/app/layout-4646e705244eabc8.js"],"name":"","async":false}
 7:I{"id":1443,"chunks":["272:static/chunks/webpack-95e1e3fb373b1bfc.js","971:static/chunks/fd9d1056-f2c30959fdcaacc1.js","864:static/chunks/864-b18952b9fe4124ca.js"],"name":"","async":false}
 8:I{"id":7165,"chunks":["555:static/chunks/app/loading-ca0ee76b463a274f.js"],"name":"","async":false}
 9:I{"id":8639,"chunks":["272:static/chunks/webpack-95e1e3fb373b1bfc.js","971:static/chunks/fd9d1056-f2c30959fdcaacc1.js","864:static/chunks/864-b18952b9fe4124ca.js"],"name":"","async":false}
