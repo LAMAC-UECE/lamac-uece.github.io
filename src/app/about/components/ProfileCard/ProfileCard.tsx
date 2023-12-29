@@ -17,22 +17,27 @@ function ProfileCard({
 
   return (
     <Card className={styles.ProfileCard}>
-      <Card.Img
-        className={styles.ProfileCardImg}
-        variant="top"
-        src={imageSource}
-      />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        {description && <Card.Text>{description}</Card.Text>}
-        {links && links.length > 0 && <hr />}
-        {links && links.length > 0 &&
-          links.map((link, index) => (
-            <div key={index}>
-              <Card.Link href={link.url} target="_blank">{link.name}</Card.Link>
-            </div>
-          ))}
-      </Card.Body>
+      <div>
+        <Card.Img
+          className={styles.ProfileCardImg}
+          variant="top"
+          src={imageSource}
+        />
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          {description && <Card.Text>{description}</Card.Text>}
+          {links && links.length > 0 && <hr />}
+          {links &&
+            links.length > 0 &&
+            links.map((link, index) => (
+              <div key={index}>
+                <Card.Link href={link.url} target="_blank">
+                  {link.name}
+                </Card.Link>
+              </div>
+            ))}
+        </Card.Body>
+      </div>
     </Card>
   );
 }
