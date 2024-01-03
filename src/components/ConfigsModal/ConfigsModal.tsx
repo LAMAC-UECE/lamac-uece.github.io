@@ -55,6 +55,12 @@ function ConfigsModal(props: {
     }
   }, []);
 
+  const checkDarkMode = () => {
+    if (getCookie("darkTheme")) {
+      document.querySelector(".modal-content")?.classList.add("dark");
+    }
+  }
+
   const toggleCookiesAcceptance = () => {
     let newCookiesState = !allowCookies;
     setAllowCookies(newCookiesState);
@@ -102,6 +108,7 @@ function ConfigsModal(props: {
   return (
     <Modal
       show={props.show}
+      onShow={checkDarkMode}
       onHide={() => props.setShow(false)}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
