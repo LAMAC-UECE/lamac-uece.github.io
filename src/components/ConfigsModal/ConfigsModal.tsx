@@ -139,7 +139,7 @@ function ConfigsModal(props: {
           <Form.Check // prettier-ignore
             disabled={allowCookies ? false : true}
             type="switch"
-            label="Desabilitar animação de introdução da página inicial"
+            label="Desabilitar animação de abertura ao abrir a página inicial"
             id="disable-intro-switch"
             checked={disableIntro}
             onChange={toggleDisableIntro}

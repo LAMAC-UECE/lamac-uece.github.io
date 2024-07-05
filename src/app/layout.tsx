@@ -15,6 +15,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>LaMaC - Laboratório de Matemática Computacional</title>
+        <meta name="description" content="Bem-vindo ao LaMaC - Laboratório de Matemática Computacional da UECE. Descubra nossos projetos e pesquisas." />
+        <meta name="keywords" content="LaMaC, Matemática Computacional, UECE, Pesquisa, Projetos" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="LaMaC - Laboratório de Matemática Computacional" />
+        <meta property="og:description" content="Bem-vindo ao LaMaC - Laboratório de Matemática Computacional da UECE. Descubra nossos projetos e pesquisas." />
+        <meta property="og:url" content="https://lamac-uece.github.io/" />
+        <meta property="og:type" content="website" />
+      </head>
       <body>
         <LamacNavbar />
         {children}
